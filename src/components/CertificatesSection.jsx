@@ -137,6 +137,15 @@ const certificates = [
     url: '#',
     icon: Award,
   },
+
+  {
+    id: 16,
+    title: 'iStart Training - Artificial Intelligence',
+    issuer: 'iStart Rajasthan',
+    date: 'Issued July 2025',
+    url: '#',
+    icon: BrainCircuit,
+  },
 ];
 
 const CERTS_TO_SHOW_INITIALLY = 3;

@@ -112,7 +112,7 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Location</h4>
                   <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Kota, Rajasthan, India
+                    Jaipur, Rajasthan, India
                   </a>
                 </div>
               </div>

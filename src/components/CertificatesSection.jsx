@@ -21,7 +21,7 @@ const certificates = [
     title: 'Oracle Certified Generative AI Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued October 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Award,
   },
   {
@@ -29,7 +29,7 @@ const certificates = [
     title: 'Oracle Certified Data Science Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued October 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Award,
   },
   {
@@ -38,7 +38,7 @@ const certificates = [
       'Examination of Advanced Certification in Robotics and Automation – Grade A',
     issuer: 'Autofina Robotics | RCAT | Cadd Centre | CCUBE',
     date: 'Issued August 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: LaptopMinimalCheck,
   },
   {
@@ -46,7 +46,7 @@ const certificates = [
     title: 'Internship - Robotics and Automation',
     issuer: 'Rajasthan Centre of Advanced Technology (R-CAT), Jaipur',
     date: 'Issued July 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Bot,
   },
   {
@@ -54,7 +54,7 @@ const certificates = [
     title: 'Industrial Training - Machine Learning and IoT',
     issuer: 'Malviya National Institute of Technology (MNIT), (MIIC), Jaipur',
     date: 'Issued July 2024',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Cpu,
   },
   {
@@ -62,7 +62,7 @@ const certificates = [
     title: 'AI Agents Intensive Course With Google',
     issuer: 'Google | Kaggle',
     date: 'Issued December 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: BrainCircuit,
   },
   {
@@ -70,7 +70,7 @@ const certificates = [
     title: 'Fundamentals of Deep Learning Course',
     issuer: 'Nvidia Corporation',
     date: 'Issued March 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: BrainCircuit,
   },
   {
@@ -78,7 +78,7 @@ const certificates = [
     title: 'Anomaly Detection Course',
     issuer: 'Nvidia Corporation',
     date: 'Issued August 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: BadgeAlert,
   },
   {
@@ -86,7 +86,7 @@ const certificates = [
     title: 'Professional Power BI Course',
     issuer: 'NoviTech R&D Private Limited',
     date: 'Issued September 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: ChartNoAxesColumnIncreasing,
   },
   {
@@ -94,7 +94,7 @@ const certificates = [
     title: 'National Space Hackathon 2025',
     issuer: 'Indian Institute of Technology (IIT), Delhi',
     date: 'Issued April 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: FileBadge,
   },
   {
@@ -102,7 +102,7 @@ const certificates = [
     title: 'amcat Certificate',
     issuer: 'SHL Corporation',
     date: 'Issued September 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: FileCheck,
   },
   {
@@ -110,7 +110,7 @@ const certificates = [
     title: 'Oracle Certified AI Foundations Associate',
     issuer: 'Oracle Corporation',
     date: 'Issued October 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Award,
   },
   {
@@ -118,7 +118,7 @@ const certificates = [
     title: 'Execute 4.0 Hackathon of E-Summit-25',
     issuer: 'Delhi Technological University (DTU), New Delhi',
     date: 'Issued October 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: FileBadge,
   },
   {
@@ -126,7 +126,7 @@ const certificates = [
     title: 'Oracle Certified DevOps Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued November 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Award,
   },
   {
@@ -134,7 +134,7 @@ const certificates = [
     title: 'Oracle Certified Developer Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued November 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: Award,
   },
 
@@ -143,7 +143,7 @@ const certificates = [
     title: 'iStart Training - Artificial Intelligence',
     issuer: 'iStart Rajasthan',
     date: 'Issued July 2025',
-    url: '#',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
     icon: BrainCircuit,
   },
 ];

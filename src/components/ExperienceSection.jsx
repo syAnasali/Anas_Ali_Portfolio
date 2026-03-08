@@ -22,7 +22,7 @@ const experiences = [
       'Understood use of ml and IoT in various medical domains',
     ],
     stack: ['Arduino', 'Proteus', 'Python', 'ML Models'],
-    link: '#',
+    link: 'https://www.linkedin.com/in/anas-ali-global',
   },
   {
     id: 2,
@@ -35,8 +35,14 @@ const experiences = [
       'Automation protocols and sensor integration and worked on industrial robots',
       'Designing and printing of 2D & 3D models',
     ],
-    stack: ['Arduino IDE', 'SolidWorks', 'Autocad', 'Tinkercad', 'ESP32 & Hardwares'],
-    link: '#',
+    stack: [
+      'Arduino IDE',
+      'SolidWorks',
+      'Autocad',
+      'Tinkercad',
+      'ESP32 & Hardwares',
+    ],
+    link: 'https://www.linkedin.com/in/anas-ali-global',
   },
 ];
 

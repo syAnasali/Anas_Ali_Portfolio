@@ -20,8 +20,8 @@ const projects = [
       'Arcjet',
       'Resend',
     ],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/AI-Finance-Manager',
+    githubUrl: 'https://github.com/syAnasali/AI-Finance-Manager',
   },
   {
     id: 2,
@@ -31,8 +31,8 @@ const projects = [
 
     image: '/projects/portfolio.png',
     tags: ['React', 'Vite', 'TailwindCSS', 'Lucide', 'Framer'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://anas-ali-global.netlify.app',
+    githubUrl: 'https://github.com/syAnasali/Anas_Ali_Portfolio',
   },
   {
     id: 3,
@@ -41,8 +41,8 @@ const projects = [
       'Autonomous, perception system & manually controlled, mini robo car.',
     image: '/projects/robo.jpg',
     tags: ['Hardware', 'IoT', 'Arduino', 'Blynk', 'ESP32'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/RCAT-Robotics-and-Automation',
+    githubUrl: 'https://github.com/syAnasali/RCAT-Robotics-and-Automation',
   },
   {
     id: 4,
@@ -51,8 +51,9 @@ const projects = [
       'A system streamlines service operations by organizing bookings, inventory, billing, customer records.',
     image: '/projects/garage.png',
     tags: ['HTML5', 'CSS3', 'PHP', 'MySql', 'Apache', 'XAMPP'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Automobile-Garage-Management-System',
+    githubUrl:
+      'https://github.com/syAnasali/Automobile-Garage-Management-System',
   },
   {
     id: 5,
@@ -61,8 +62,8 @@ const projects = [
       'A web music player lets you stream and control your music directly from your browser.',
     image: '/projects/music.png',
     tags: ['HTML5', 'CSS3', 'JavaScript'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Web-Music-Player',
+    githubUrl: 'https://github.com/syAnasali/Web-Music-Player',
   },
   {
     id: 6,
@@ -71,19 +72,19 @@ const projects = [
       'A password manager securely stores and auto-fills your passwords in place.',
     image: '/projects/pass.png',
     tags: ['React', 'Vite', 'TailwindCSS', 'Lucide'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Password-Manager',
+    githubUrl: 'https://github.com/syAnasali/Password-Manager',
   },
 
   {
     id: 7,
-    title: 'Cloud Storage Platform',
+    title: 'Drive Clone',
     description:
       'A cloud file storage platform lets you securely store, access, and share files from anywhere.',
-    image: 'https://placehold.co/600x400/1e293b/ffffff?text=Cloud+Storage',
+    image: '/projects/drive.png',
     tags: ['Express', 'Node', 'MongoDB', 'Multer', 'JWT'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Drive_Clone',
+    githubUrl: 'https://github.com/syAnasali/Drive_Clone',
   },
 
   {
@@ -93,8 +94,8 @@ const projects = [
       'A task tracker helps you organize, prioritize, and monitor on tasks.',
     image: '/projects/task.png',
     tags: ['React', 'Vite', 'TailwindCSS'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Task-Tracker',
+    githubUrl: 'https://github.com/syAnasali/Task-Tracker',
   },
 
   {
@@ -104,8 +105,8 @@ const projects = [
       'A soil and climate based crop prediction system on the basis of various factors.',
     image: '/projects/crop.png',
     tags: ['Python', 'Machine Learning', 'Sklearn', 'NumPy', 'Flask'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Crop-Prediction-System',
+    githubUrl: 'https://github.com/syAnasali/Crop-Prediction-System',
   },
 
   {
@@ -115,8 +116,8 @@ const projects = [
       'A system to manage orders and tokens efficiently for shop and restaurants.',
     image: 'https://placehold.co/600x400/1e293b/ffffff?text=Token+Flow',
     tags: ['Express', 'Node', 'React', 'SQLite', 'Socket.IO'],
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://github.com/syAnasali/Token_System',
+    githubUrl: 'https://github.com/syAnasali/Token_System',
   },
 ];
 

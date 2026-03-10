@@ -48,7 +48,7 @@ const projects = [
     id: 4,
     title: 'Garage Managemenet System',
     description:
-      'A system streamlines service operations by organizing bookings, inventory, billing, customer records.',
+      'A system manages service operations by organizing bookings, customer records.',
     image: '/projects/garage.png',
     tags: ['HTML5', 'CSS3', 'PHP', 'MySql', 'Apache', 'XAMPP'],
     demoUrl: 'https://github.com/syAnasali/Automobile-Garage-Management-System',

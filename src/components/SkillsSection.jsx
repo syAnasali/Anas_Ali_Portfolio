@@ -219,6 +219,11 @@ const skills = [
     icon: 'https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg',
   },
   {
+    name: 'Jenkins',
+    category: 'devops',
+    icon: 'https://1000logos.net/wp-content/uploads/2024/09/Jenkins-Emblem.png',
+  },
+  {
     name: 'Bash',
     category: 'devops',
     icon: 'https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg',

@@ -26,6 +26,14 @@ const certificates = [
   },
   {
     id: 2,
+    title: 'AI, ML & Automation Internship',
+    issuer: 'AiLusion',
+    date: 'Issued July 2026',
+    url: 'https://www.linkedin.com/in/anas-ali-global',
+    icon: BrainCircuit,
+  },
+  {
+    id: 3,
     title: 'Oracle Certified Data Science Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued October 2025',
@@ -33,7 +41,7 @@ const certificates = [
     icon: Award,
   },
   {
-    id: 3,
+    id: 4,
     title:
       'Examination of Advanced Certification in Robotics and Automation – Grade A',
     issuer: 'Autofina Robotics | RCAT | Cadd Centre | CCUBE',
@@ -42,7 +50,7 @@ const certificates = [
     icon: LaptopMinimalCheck,
   },
   {
-    id: 4,
+    id: 5,
     title: 'Internship - Robotics and Automation',
     issuer: 'Rajasthan Centre of Advanced Technology (R-CAT), Jaipur',
     date: 'Issued July 2025',
@@ -50,7 +58,7 @@ const certificates = [
     icon: Bot,
   },
   {
-    id: 5,
+    id: 6,
     title: 'Industrial Training - Machine Learning and IoT',
     issuer: 'Malviya National Institute of Technology (MNIT), (MIIC), Jaipur',
     date: 'Issued July 2024',
@@ -58,7 +66,7 @@ const certificates = [
     icon: Cpu,
   },
   {
-    id: 6,
+    id: 7,
     title: 'AI Agents Intensive Course With Google',
     issuer: 'Google | Kaggle',
     date: 'Issued December 2025',
@@ -66,7 +74,7 @@ const certificates = [
     icon: BrainCircuit,
   },
   {
-    id: 7,
+    id: 8,
     title: 'Fundamentals of Deep Learning Course',
     issuer: 'Nvidia Corporation',
     date: 'Issued March 2025',
@@ -74,7 +82,7 @@ const certificates = [
     icon: BrainCircuit,
   },
   {
-    id: 8,
+    id: 9,
     title: 'Anomaly Detection Course',
     issuer: 'Nvidia Corporation',
     date: 'Issued August 2025',
@@ -82,7 +90,7 @@ const certificates = [
     icon: BadgeAlert,
   },
   {
-    id: 9,
+    id: 10,
     title: 'Professional Power BI Course',
     issuer: 'NoviTech R&D Private Limited',
     date: 'Issued September 2025',
@@ -90,7 +98,7 @@ const certificates = [
     icon: ChartNoAxesColumnIncreasing,
   },
   {
-    id: 10,
+    id: 11,
     title: 'National Space Hackathon 2025',
     issuer: 'Indian Institute of Technology (IIT), Delhi',
     date: 'Issued April 2025',
@@ -98,7 +106,7 @@ const certificates = [
     icon: FileBadge,
   },
   {
-    id: 11,
+    id: 12,
     title: 'amcat Certificate',
     issuer: 'SHL Corporation',
     date: 'Issued September 2025',
@@ -106,7 +114,7 @@ const certificates = [
     icon: FileCheck,
   },
   {
-    id: 12,
+    id: 13,
     title: 'Oracle Certified AI Foundations Associate',
     issuer: 'Oracle Corporation',
     date: 'Issued October 2025',
@@ -114,7 +122,7 @@ const certificates = [
     icon: Award,
   },
   {
-    id: 13,
+    id: 14,
     title: 'Execute 4.0 Hackathon of E-Summit-25',
     issuer: 'Delhi Technological University (DTU), New Delhi',
     date: 'Issued October 2025',
@@ -122,7 +130,7 @@ const certificates = [
     icon: FileBadge,
   },
   {
-    id: 14,
+    id: 15,
     title: 'Oracle Certified DevOps Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued November 2025',
@@ -130,7 +138,7 @@ const certificates = [
     icon: Award,
   },
   {
-    id: 15,
+    id: 16,
     title: 'Oracle Certified Developer Professional',
     issuer: 'Oracle Corporation',
     date: 'Issued November 2025',
@@ -139,7 +147,7 @@ const certificates = [
   },
 
   {
-    id: 16,
+    id: 17,
     title: 'iStart Training - Artificial Intelligence',
     issuer: 'iStart Rajasthan',
     date: 'Issued July 2025',

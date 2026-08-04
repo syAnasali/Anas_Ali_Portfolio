@@ -13,7 +13,7 @@ const experiences = [
   {
     id: 1,
     company: 'Malviya National Institute of Technology (MNIT), (MIIC)',
-    role: 'Machine Learning and IoT Trainee',
+    role: 'Machine Learning and IoT Intern',
     period: '15th July 2024 — 31st July 2024',
     location: 'Jaipur',
     highlights: [
@@ -41,6 +41,26 @@ const experiences = [
       'Autocad',
       'Tinkercad',
       'ESP32 & Hardwares',
+    ],
+    link: 'https://www.linkedin.com/in/anas-ali-global',
+  },
+  {
+    id: 3,
+    company: 'AiLusion',
+    role: 'AI, ML & Automation Intern',
+    period: '15th May 2026 — 30th June 2026',
+    location: 'Bangalore',
+    highlights: [
+      'Experience in AI, ML & Automation',
+      'Python, Generative AI & Backend Automation',
+      'Recognized for Technical Excellence & Problem Solving',
+    ],
+    stack: [
+      'Python',
+      'Machine Learning',
+      'Generative AI',
+      'Backend Automation & API Integration',
+      'Git & Version Control',
     ],
     link: 'https://www.linkedin.com/in/anas-ali-global',
   },

@@ -1,34 +1,54 @@
-import { ArrowUp } from 'lucide-react';
+import React from "react";
+
+const FONT_MONO = '"DM Mono", monospace';
 
 export const Footer = () => {
   return (
-    <footer className="relative mt-12 border-t border-border bg-card pt-12 pb-8 px-4">
-     
-      <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-        <a
-          href="#hero"
-          aria-label="Scroll back to top"
-          className="group flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-primary/30">
-          <ArrowUp
-            size={20}
-            className="transition-transform group-hover:-translate-y-0.5"
-          />
-        </a>
-      </div>
+    <footer
+      style={{
+        position: "relative",
+        marginTop: "3rem",
+        borderTop: "1px solid rgba(255,255,255,0.07)",
+        background: "transparent",
+        padding: "3rem 6vw 4rem",
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.8rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: "0.6rem",
+            letterSpacing: "0.15em",
+            color: "rgba(255,255,255,0.45)",
+            textTransform: "uppercase",
+          }}
+        >
+          © {new Date().getFullYear()} Anas Ali • B.Tech CSE • Jaipur, India
+        </span>
 
-      
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col items-center gap-2 text-center">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()}{' '}
-            <span className="font-medium text-blue-700">Anas Ali</span>. All
-            rights reserved.
-          </p>
-          <p className="text-xs text-muted-foreground/80">
-            Designed, Developed and Maintained by Anas Ali.
-          </p>
-        </div>
+        <p
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: "0.55rem",
+            letterSpacing: "0.12em",
+            color: "rgba(255,255,255,0.3)",
+            margin: 0,
+            textTransform: "uppercase",
+          }}
+        >
+          Designed & Developed by Anas Ali
+        </p>
       </div>
     </footer>
   );
 };
+
+export default Footer;

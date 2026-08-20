@@ -64,18 +64,6 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-  }
-
-  .dark {
     --background: 222 47% 4%;
     --foreground: 213 31% 91%;
 
@@ -85,6 +73,25 @@
     --primary-foreground: 213 31% 91%;
 
     --border: 217 33% 20%;
+
+    --room-black: #000000;
+    --holo-text: rgba(249, 246, 238, 0.95);
+    --holo-glow: rgba(167, 226, 255, 0.2);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --cursor-color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* Light Theme Color Overrides - Icy Blueprint Slate */
+  [data-theme="light"] {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --room-black: #f1f5f9;
+    --holo-text: #0f172a;
+    --holo-glow: rgba(0, 0, 0, 0.02);
+    --cursor-color: rgba(15, 23, 42, 0.95);
   }
 
   * {
@@ -101,63 +108,124 @@
   }
 }
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-
-  @media (width >= 640px) {
-    max-width: 640px;
-  }
-  @media (width >= 768px) {
-    max-width: 768px;
-  }
-  @media (width >= 1024px) {
-    max-width: 1024px;
-  }
-  @media (width >= 1280px) {
-    max-width: 1280px;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
-}
-
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-}
-
-@utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
-}
-
-@utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
-}
-
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
-}
-
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
-}
-
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
-}
-
 #root {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  height: 100%;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--room-black);
+  overflow-x: clip;
+}
+
+.spatial-scene {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.spatial-environment {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--room-black);
+  transition: background 0.3s ease;
+}
+
+.hologram-interface {
+  position: relative;
+  z-index: 3;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: clip;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hologram-interface::-webkit-scrollbar {
+  display: none;
+}
+
+.hologram-content {
+  color: var(--holo-text);
+  text-shadow: 0 0 14px var(--holo-glow);
+}
+
+/* Light Theme High Contrast & Blueprint Styling Protection */
+[data-theme="light"] .spatial-environment,
+[data-theme="light"] .hologram-interface {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] section {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] p {
+  color: #334155 !important;
+}
+
+/* Override inline white/cream text colors */
+[data-theme="light"] [style*="color: #fafaf8"],
+[data-theme="light"] [style*="color:#fafaf8"],
+[data-theme="light"] [style*="color: #ffffff"],
+[data-theme="light"] [style*="color:#ffffff"],
+[data-theme="light"] [style*="color: #e8e0d0"],
+[data-theme="light"] [style*="color:#e8e0d0"] {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] [style*="color: rgba(255, 255, 255"],
+[data-theme="light"] [style*="color:rgba(255,255,255"] {
+  color: #334155 !important;
+}
+
+/* Fix light theme skill pills, domain selector buttons, and card borders */
+[data-theme="light"] button {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] div[style*="border: 1px solid rgba(255, 255, 255"],
+[data-theme="light"] div[style*="border:1px solid rgba(255,255,255"],
+[data-theme="light"] button[style*="border: 1px solid rgba(255, 255, 255"],
+[data-theme="light"] span[style*="border: 1px solid rgba(255, 255, 255"] {
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] div[style*="background: transparent"],
+[data-theme="light"] div[style*="background:transparent"] {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+
+[data-theme="light"] article {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Light theme cursor */
+[data-theme="light"] .iss-cursor {
+  color: rgba(15, 23, 42, 0.95) !important;
+  filter: drop-shadow(0 0 3px rgba(15, 23, 42, 0.3)) !important;
+}

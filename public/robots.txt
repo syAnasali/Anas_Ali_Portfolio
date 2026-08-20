@@ -1,0 +1,6 @@
+# Robots.txt for Anas Ali Portfolio Web Engine
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://anas-ali-global.netlify.app/sitemap.xml

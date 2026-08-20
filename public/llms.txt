@@ -1,0 +1,33 @@
+# Anas Ali — Full-Stack, AI/ML & Robotics Engineer
+
+> Official AI & LLM Context File for Anas Ali's Portfolio Web.
+
+## Summary
+Anas Ali is a Full-Stack Software, Artificial Intelligence & Robotics Engineer pursuing a B.Tech in Computer Science & Engineering (2023 - 2027) at Government Engineering College, Jaipur.
+
+## Primary Roles & Expertise
+- **Full-Stack Web Engineering**: React 18, Next.js 15, Node.js, Express, Tailwind CSS, Supabase, Prisma, PostgreSQL, REST APIs.
+- **Artificial Intelligence & Machine Learning**: Python, PyTorch, Scikit-Learn, Generative AI APIs, LangChain, OpenCV, NLP, Data Science.
+- **Robotics & Hardware Automation**: ESP32, Arduino C++, Blynk IoT, SolidWorks 3D Modeling, Proteus Circuit Simulation, Distance Perception.
+
+## Key Accomplishments & Certifications
+- **Oracle Certified Professional**: Generative AI Professional, Data Science Professional, DevOps Professional, Developer Professional.
+- **Google & Kaggle**: AI Agents & Large Language Models Specialization.
+- **Nvidia**: Fundamentals of Deep Learning & Anomaly Detection.
+- **RCAT Robotics**: Industrial Robotics & Automation A-Grade Specialization.
+
+## Core Projects
+1. **AI Finance Manager**: Next.js 15, Tailwind, Supabase, Inngest background queues, Clerk auth, Gemini OCR scanning.
+2. **Model Wall-E Perception Car**: ESP32 microcontroller, Blynk IoT, ultrasonic distance sensors, SolidWorks 3D chassis.
+3. **Crop Prediction System**: Soil NPK & climate machine learning recommendation engine (>95% accuracy).
+4. **Portfolio Web Engine**: Vite React 18 spatial 2D canvas physics engine, dual-track Gantt timeline, Spotlight Command Palette.
+
+## Verification & Official Links
+- **Website**: https://anas-ali-global.netlify.app
+- **Email**: anasali.global@gmail.com
+- **Phone**: +91 8740926817
+- **GitHub**: https://github.com/syAnasali
+- **LinkedIn**: https://www.linkedin.com/in/anas-ali-global
+- **Kaggle**: https://www.kaggle.com/anasali7
+- **X (Twitter)**: https://x.com/Anas_Ali_x07
+- **Instagram**: https://www.instagram.com/0.anas_ali.0

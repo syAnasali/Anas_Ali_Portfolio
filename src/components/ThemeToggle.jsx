@@ -1,46 +1,45 @@
-import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
-export const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
-    }
-  };
+export const ThemeToggle = ({ size = 36, isMobile = false }) => {
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
-      className={cn(
-        "fixed top-5 right-5 max-sm:right-16 z-50 p-2 rounded-full transition-colors duration-300",
-        "focus:outline-none"
-      )}
+      title={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: "50%",
+        border: isDark ? "1px solid rgba(255,255,255,0.18)" : "1px solid rgba(0,0,0,0.18)",
+        background: isDark ? "rgba(12,12,14,0.85)" : "rgba(255,255,255,0.9)",
+        color: isDark ? "#f43f5e" : "#0284c7",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        backdropFilter: "blur(8px)",
+        transition: "all 0.25s ease",
+        padding: 0,
+        boxShadow: isDark ? "0 0 12px rgba(244,63,94,0.15)" : "0 2px 10px rgba(0,0,0,0.08)",
+      }}
     >
-      {isDarkMode ? (
-        <Sun className="h-6 w-6 text-yellow-300 cursor-pointer" />
-      ) : (
-        <Moon className="h-6 w-6 text-blue-900 cursor-pointer" />
-      )}
+      <motion.div
+        key={theme}
+        initial={{ scale: 0.6, rotate: -90, opacity: 0 }}
+        animate={{ scale: 1, rotate: 0, opacity: 1 }}
+        exit={{ scale: 0.6, rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        style={{ display: "flex" }}
+      >
+        {isDark ? <Sun size={isMobile ? 14 : 16} className="text-amber-400" /> : <Moon size={isMobile ? 14 : 16} className="text-indigo-600" />}
+      </motion.div>
     </button>
   );
 };
+
+export default ThemeToggle;

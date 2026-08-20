@@ -1,91 +1,69 @@
-# 🚀 My Modern Developer Portfolio
+# 🚀 Anas Ali — Portfolio Web Engine
 
-A clean, elegant, and fully responsive developer portfolio website built with React, TailwindCSS, and modern UI libraries. This portfolio highlights my skills, projects, experience, and personality — crafted with smooth animations, a polished layout, and a focus on professional presentation.
+An ultra-high performance, futuristic developer portfolio engineered with **React 18**, **Vite**, **Tailwind CSS**, **Framer Motion**, and a custom **2D Canvas Constellation Physics Engine**.
 
-## 🌟 Overview
+This portfolio presents Anas Ali's professional software engineering, deep learning, and robotics projects with 100% data fidelity, featuring interactive system architecture drawers, a Spotlight Command Palette (`Cmd+K`), a Developer CLI Terminal mode, and a dual-track Gantt experience trajectory.
 
-A modern, responsive, and beautifully animated personal developer portfolio website built using Vite + React, styled with Tailwind CSS, enriched with Lucide icons, and animated through Framer Motion.
+---
 
-This portfolio represents my professional identity — showcasing my journey, technical expertise, and the projects I’ve crafted across software development, AI/ML, and robotics.
+## 🌟 Key Features
 
-It includes smooth animations, a dynamic star‑space background, theme toggling, and clean navigation that highlights each section of the site.
+- **⚡ Holographic Preloader (`Preloader.jsx`)**: Real-time telemetry log sequence with percentage counter (`000%` → `100%`), serif typography reveal, and smooth curtain exit.
+- **🛰️ Dual-Column Hero Header (`HeroSection.jsx`)**: Interactive domain selector (`Full-Stack Web`, `AI & Data Science`, `Robotics & IoT`), ISS Satellite trailing cursor, and static metric stat counters (`15+ Projects Shipped`, `17 Certs & Awards`, `3 Internship Roles`).
+- **🎯 System Architecture Drawers (`ProjectsSection.jsx`)**: Click-to-open system architecture modals (`Inspect Architecture`) showing data flow pipelines, backend/hardware challenges solved, benchmark performance metrics, and live repository links.
+- **🔍 Global Command Palette (`CommandPalette.jsx`)**: Keyboard-driven Spotlight search modal listening to `Cmd + K` / `Ctrl + K` for instant section navigation and quick actions (Copy Email, WhatsApp Chat, GitHub, LinkedIn).
+- **💻 Developer CLI Terminal Mode (`TerminalModal.jsx`)**: Retro-futuristic command-line overlay supporting interactive commands (`help`, `whoami`, `skills`, `projects`, `certs`, `contact`, `clear`, `exit`).
+- **📅 Dual-Track Experience Gantt Trajectory (`ExperienceSection.jsx`)**: 1:1 dual-track Gantt timeline engine with central laser line, segment year labels (`2023–2027`), parallel time-proportional projection strips, and canvas particle emission scanner.
+- **💬 Grouped Contact & Actions (`ContactSection.jsx`)**: Green glow instant WhatsApp messaging banner (`+91 8740926817`), Formspree direct email message form, click-to-copy email/phone toasts, and Resume link.
+- **🌓 Dual Theme System (`ThemeToggle.jsx`)**: Dark space mode (`#000000`) and Cybernetic Blueprint Light mode (`#f1f5f9`) with 100% high-contrast readability protection for text, canvas particles, and the ISS cursor.
+- **📱 Responsive Mobile Navigation (`Navbar.jsx`)**: Left-aligned mobile overlay menu matching reference site standards with staggered slide-in animation from the left for every navigation item.
+- **📊 SEO & PWA Optimization**: Structured JSON-LD Schema (`schema.org/Person`), OpenGraph social cards, Twitter cards, `robots.txt`, `sitemap.xml`, `llms.txt`, `site.webmanifest`, and Rollup manualChunk code splitting.
+
+---
 
 ## 🧰 Tech Stack
 
-### Frontend Frameworks & Tools
+- **Frontend**: React 18, Vite 5, Tailwind CSS
+- **Animations**: Framer Motion, HTML5 Canvas 2D
+- **Icons**: Lucide React
+- **Icons & Favicons**: `.ico` Favicon, `.png` Apple Touch Icons
+- **SEO & Search**: JSON-LD Schema (`schema.org/Person`), OpenGraph, Twitter Cards, `sitemap.xml`, `robots.txt`, `llms.txt`
 
-* ⚛️ **React** — Component-driven UI
-* ⚡ **Vite** — Fast bundling & DX
-* 🎨 **Tailwind CSS** — Utility-first styling
-* 🎯 **Lucide Icons** — Clean and scalable icons
-* 🎛️ **Radix UI** — Accessible component primitives
-* 🧩 **Framer Motion** — Smooth animations
-
-## ✨ Features
-
-* **🌓 Light & Dark Mode Toggle**
-    Smooth theme transitions with user preference stored and automatically applied.
-
-* **🌌 Animated Star-Space Background**
-    A dynamic, immersive background with subtle movement and glowing cinematic effects.
-
-* **📦 Section-Based Navigation**
-    Includes all core sections of a professional developer portfolio:
-    * Home (`#hero`)
-    * About (`#about`)
-    * Skills (`#skills`)
-    * Projects (`#projects`)
-    * Certifications (`#certificates`)
-    * Experience (`#experience`)
-    * Contact (`#contact`)
-
-* **⚛️ React Components + Clean Structure**
-    Reusable, modular code that makes expanding the portfolio easy.
-
-* **🎨 TailwindCSS Styling**
-    Utility-first classes for pixel-perfect, responsive design.
-
-* **🌀 Framer Motion Animations**
-    Smooth reveal effects, hover transitions, parallax movement, and scroll-triggered animations.
-
-* **📱 Fully Responsive Layout**
-    Optimized for desktop, tablet, and all mobile screen sizes.
-
-* **🖼️ Project & Experience Cards**
-    Showcases work with icons, descriptions, stacks, links, and animations.
-
-* **📬 Contact Section**
-    Links to social profiles + email with interactive elements.
+---
 
 ## 🚀 Getting Started
 
-Follow these steps to run the project locally:
-
 ### Prerequisites
+- Node.js (v18+ recommended)
+- npm or yarn
 
-* Node.js (LTS recommended)
-* Git installed
-
-### Clone the Repository
-
+### Installation
 ```bash
-git clone
-cd portfolio
-Install Dependencies
-Bash
+# Clone the repository
+git clone https://github.com/syAnasali/Anas_Ali_Portfolio.git
 
+# Navigate to directory
+cd Anas_Ali_Portfolio_Web
+
+# Install dependencies
 npm install
-Run Development Server
-Bash
 
+# Start development server
 npm run dev
-Your portfolio will be live at: http://localhost:5173
-
 ```
 
+### Production Build
+```bash
+# Build production bundle with Rollup chunk splitting
+npm run build
 
+# Preview production build locally
+npm run preview
+```
 
-## 🏁 Final Notes
-This portfolio is built to highlight my work, growth, and expertise across different domains. It's modern, fast, and customizable — and it truly reflects my passion for building purposeful, high-quality digital experiences.
+---
 
-# - Anas Ali
+## 📄 License & Credits
+
+Designed & Engineered by **Anas Ali**.  
+© 2026 Anas Ali • B.Tech Computer Science & Engineering • Jaipur, India.

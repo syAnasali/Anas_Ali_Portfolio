@@ -123,12 +123,13 @@ export function ClockWidget() {
 
   return (
     <div
+      id="clock-widget"
       style={{
         position: "fixed",
         bottom: "1.25rem",
         left: "1.25rem",
         zIndex: 49,
-        color: "white",
+        color: "var(--hud-text, white)",
         fontFamily: "'DM Mono', 'SF Mono', monospace",
         fontSize: "0.82rem",
         display: "flex",

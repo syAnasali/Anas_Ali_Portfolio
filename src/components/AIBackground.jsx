@@ -316,9 +316,9 @@ export function AIBackground() {
         ctx.globalAlpha = opacity;
         ctx.shadowBlur = mote.isNear ? 24 : 14;
         ctx.shadowColor = mote.isNear
-          ? "rgba(235,242,255,0.56)"
-          : "rgba(229,236,252,0.34)";
-        ctx.fillStyle = "rgba(248,250,255,0.97)";
+          ? (isLight ? "rgba(99,102,241,0.4)" : "rgba(235,242,255,0.56)")
+          : (isLight ? "rgba(99,102,241,0.25)" : "rgba(229,236,252,0.34)");
+        ctx.fillStyle = isLight ? "rgba(99,102,241,0.7)" : "rgba(248,250,255,0.97)";
         ctx.beginPath();
         ctx.arc(drawX, drawY, mote.size * 0.5, 0, Math.PI * 2);
         ctx.fill();
@@ -336,7 +336,7 @@ export function AIBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${PARTICLE_COLOR},${p.alpha})`;
+        ctx.fillStyle = `rgba(${particleClr},${p.alpha})`;
         ctx.fill();
       }
 
@@ -438,7 +438,7 @@ export function AIBackground() {
 
         ctx.beginPath();
         ctx.arc(x, y, 1.2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.fillStyle = isLight ? "rgba(99,102,241,0.9)" : "rgba(255,255,255,0.7)";
         ctx.fill();
 
         return true;

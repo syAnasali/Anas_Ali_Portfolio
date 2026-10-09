@@ -246,6 +246,7 @@ export function BottomRightHUD() {
 
   return (
     <div
+      id="bottom-right-hud"
       style={{
         position: "fixed",
         bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))",
@@ -267,9 +268,9 @@ export function BottomRightHUD() {
             width: `${btnSize}px`,
             height: `${btnSize}px`,
             borderRadius: "50%",
-            border: "1px solid rgba(255,255,255,0.15)",
-            background: "rgba(12,12,14,0.85)",
-            color: "#e8e0d0",
+            border: "1px solid var(--hud-border, rgba(255,255,255,0.15))",
+            background: "var(--hud-bg, rgba(12,12,14,0.85))",
+            color: "var(--hud-text, #e8e0d0)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -327,9 +328,9 @@ export function BottomRightHUD() {
                 width: `${btnSize}px`,
                 height: `${btnSize}px`,
                 borderRadius: "50%",
-                border: "none",
-                background: "rgba(10,10,10,0.85)",
-                color: "rgba(255,255,255,0.7)",
+                border: "1px solid var(--hud-border, rgba(255,255,255,0.15))",
+                background: "var(--hud-bg, rgba(10,10,10,0.85))",
+                color: "var(--hud-text, rgba(255,255,255,0.7))",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -353,7 +354,7 @@ export function BottomRightHUD() {
                   cy={btnSize / 2}
                   r={btnR}
                   fill="none"
-                  stroke="rgba(255,255,255,0.16)"
+                  stroke="var(--hud-border, rgba(255,255,255,0.16))"
                   strokeWidth="1.5"
                 />
                 <circle
@@ -384,7 +385,7 @@ export function BottomRightHUD() {
           display: "flex",
           gap: isMobile ? "0.6rem" : "1rem",
           alignItems: "center",
-          color: "white",
+          color: "var(--hud-text, white)",
           fontFamily: FONT_MONO,
           fontSize: isMobile ? "0.7rem" : "0.82rem",
           userSelect: "none",
@@ -449,7 +450,7 @@ export function BottomRightHUD() {
                   cy={sz / 2}
                   r={rad}
                   fill="none"
-                  stroke="rgba(255,255,255,0.08)"
+                  stroke="var(--hud-border, rgba(255,255,255,0.08))"
                   strokeWidth="1.5"
                 />
                 <circle

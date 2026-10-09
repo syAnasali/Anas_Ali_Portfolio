@@ -7,13 +7,13 @@ const FONT_MONO = '"DM Mono", monospace';
 const FONT_SANS = '"DM Sans", sans-serif';
 
 const C = {
-  lang: "#a78bfa",
-  frontend: "#60a5fa",
-  backend: "#10b981",
-  ai: "#f5ca40",
-  devops: "#22d3ee",
-  robotics: "#f97316",
-  tools: "#f472b6",
+  lang: "var(--cat-lang, #a78bfa)",
+  frontend: "var(--cat-frontend, #60a5fa)",
+  backend: "var(--cat-backend, #10b981)",
+  ai: "var(--cat-ai, #f5ca40)",
+  devops: "var(--cat-devops, #22d3ee)",
+  robotics: "var(--cat-robotics, #f97316)",
+  tools: "var(--cat-tools, #f472b6)",
 };
 
 const CATEGORIES = [
@@ -151,7 +151,7 @@ function Tile({ t, isMobile }) {
         style={{
           fontFamily: FONT_SANS,
           fontSize: "0.72rem",
-          color: "rgba(255,255,255,0.55)",
+          color: "var(--text-body, rgba(255,255,255,0.55))",
           textAlign: "center",
           lineHeight: 1.3,
         }}
@@ -161,7 +161,7 @@ function Tile({ t, isMobile }) {
           <span
             style={{
               display: "block",
-              color: "rgba(255,255,255,0.3)",
+              color: "var(--text-muted, rgba(255,255,255,0.3))",
               fontSize: "0.62rem",
               marginTop: "2px",
               fontFamily: FONT_MONO,
@@ -180,7 +180,7 @@ export function SkillsSection() {
 
   return (
     <section
-      id="stack"
+      id="skills"
       style={{
         padding: isMobile ? "4rem 4vw" : "4rem 6vw 10rem",
         background: "transparent",
@@ -188,8 +188,6 @@ export function SkillsSection() {
         textAlign: "left",
       }}
     >
-      {/* Target anchor for navbar links to #skills */}
-      <div id="skills" style={{ position: "absolute", top: 0 }} />
 
       {/* Header bar */}
       <div
@@ -205,7 +203,7 @@ export function SkillsSection() {
             fontFamily: FONT_MONO,
             fontSize: "0.62rem",
             letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.4)",
+            color: "var(--text-muted, rgba(255,255,255,0.4))",
             textTransform: "uppercase",
           }}
         >
@@ -215,7 +213,7 @@ export function SkillsSection() {
           style={{
             flex: 1,
             height: "1px",
-            background: "rgba(255,255,255,0.07)",
+            background: "var(--border-subtle, rgba(255,255,255,0.07))",
           }}
         />
       </div>
@@ -250,7 +248,7 @@ export function SkillsSection() {
                 fontWeight: 800,
                 lineHeight: 1.05,
                 letterSpacing: "0.02em",
-                color: "#fafaf8",
+                color: "var(--text-heading, #fafaf8)",
                 margin: "0 0 1.2rem",
               }}
             >
@@ -266,7 +264,7 @@ export function SkillsSection() {
               fontFamily: FONT_SANS,
               fontSize: "0.88rem",
               lineHeight: 1.7,
-              color: "rgba(255,255,255,0.48)",
+              color: "var(--text-muted, rgba(255,255,255,0.48))",
               maxWidth: "260px",
             }}
           >
@@ -285,7 +283,7 @@ export function SkillsSection() {
                 gap: isMobile ? "1.3rem" : "24px",
                 alignItems: isMobile ? "flex-start" : "center",
                 padding: ci === 0 ? "0 0 24px" : "24px 0",
-                borderTop: ci === 0 ? "none" : "1px solid rgba(255,255,255,0.1)",
+                borderTop: ci === 0 ? "none" : "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
               }}
             >
               <div

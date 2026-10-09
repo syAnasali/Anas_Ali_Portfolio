@@ -1,7 +1,8 @@
 import React, { useRef, useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Github, Linkedin, FileDown, Cpu, Globe, Brain, Sparkles } from "lucide-react";
+import { Mail, Github, Linkedin, FileDown, Cpu, Globe, Brain } from "lucide-react";
 import { useIsMobile, useIsTouchDevice } from "../hooks/useMediaQuery";
+import { scrollToSection } from "../hooks/useHashScroll";
 
 const FONT_SERIF = '"Editorial New", "Playfair Display", Georgia, serif';
 const FONT_MONO = '"DM Mono", monospace';
@@ -57,7 +58,10 @@ export const HeroSection = () => {
     }
   }, [showToast]);
 
-  const handleResumeDownload = useCallback(() => {
+  const handleResumeDownload = useCallback((e) => {
+    e?.preventDefault?.();
+    scrollToSection("contact");
+    history.replaceState(null, "", "#contact");
     showToast("Opening Resume / CV...");
   }, [showToast]);
 
@@ -99,9 +103,9 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      onMouseMove={isTouchDevice ? undefined : onMouseMove}
-      onMouseLeave={isTouchDevice ? undefined : onMouseLeave}
-      onMouseEnter={isTouchDevice ? undefined : onMouseEnterSection}
+      onMouseMove={isTouchDevice || isMobile ? undefined : onMouseMove}
+      onMouseLeave={isTouchDevice || isMobile ? undefined : onMouseLeave}
+      onMouseEnter={isTouchDevice || isMobile ? undefined : onMouseEnterSection}
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -143,14 +147,14 @@ export const HeroSection = () => {
               }}
             >
               <div
-                style={{ width: "28px", height: "1px", background: "#e8e0d0" }}
+                style={{ width: "28px", height: "1px", background: "var(--border-strong, #e8e0d0)" }}
               />
               <span
                 style={{
                   fontFamily: FONT_MONO,
                   fontSize: isMobile ? "0.62rem" : "0.72rem",
                   letterSpacing: "0.12em",
-                  color: "#e8e0d0",
+                  color: "var(--text-muted, #e8e0d0)",
                   textTransform: "uppercase",
                 }}
               >
@@ -177,7 +181,7 @@ export const HeroSection = () => {
                 fontWeight: 800,
                 lineHeight: 0.9,
                 letterSpacing: "0.02em",
-                color: "#fafaf8",
+                color: "var(--text-heading, #fafaf8)",
                 margin: 0,
               }}
             >
@@ -207,7 +211,7 @@ export const HeroSection = () => {
                 fontWeight: 800,
                 lineHeight: 1.05,
                 letterSpacing: "0.02em",
-                color: "#fafaf8",
+                color: "var(--text-heading, #fafaf8)",
                 margin: 0,
                 display: "block",
               }}
@@ -234,7 +238,7 @@ export const HeroSection = () => {
                   fontFamily: FONT_MONO,
                   fontSize: "0.65rem",
                   letterSpacing: "0.15em",
-                  color: "rgba(255,255,255,0.45)",
+                  color: "var(--text-muted, rgba(255,255,255,0.45))",
                   textTransform: "uppercase",
                   marginBottom: "0.4rem",
                 }}
@@ -245,7 +249,7 @@ export const HeroSection = () => {
                 style={{
                   fontFamily: FONT_SANS,
                   fontSize: "0.9rem",
-                  color: "#e8e0d0",
+                  color: "var(--text-body, #e8e0d0)",
                   lineHeight: 1.5,
                 }}
               >
@@ -260,7 +264,7 @@ export const HeroSection = () => {
                   fontFamily: FONT_MONO,
                   fontSize: "0.65rem",
                   letterSpacing: "0.15em",
-                  color: "rgba(255,255,255,0.45)",
+                  color: "var(--text-muted, rgba(255,255,255,0.45))",
                   textTransform: "uppercase",
                   marginBottom: "0.4rem",
                 }}
@@ -271,12 +275,11 @@ export const HeroSection = () => {
                 style={{
                   fontFamily: FONT_SANS,
                   fontSize: "0.9rem",
-                  color: "#e8e0d0",
+                  color: "var(--text-body, #e8e0d0)",
                   lineHeight: 1.5,
                 }}
               >
-                B.Tech in Computer Science
-                <br />
+                B.Tech in Computer Science<br />
                 & Engineering
               </p>
             </div>
@@ -365,11 +368,12 @@ export const HeroSection = () => {
                     width: "38px",
                     height: "38px",
                     borderRadius: "50%",
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "rgba(255,255,255,0.65)",
+                    color: "var(--text-body, rgba(255,255,255,0.65))",
+                    background: "var(--bg-surface, transparent)",
                     textDecoration: "none",
                     transition: "all 0.2s",
                     flexShrink: 0,
@@ -377,13 +381,13 @@ export const HeroSection = () => {
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = "#e8e0d0";
-                    el.style.color = "#e8e0d0";
+                    el.style.borderColor = "var(--border-strong, #e8e0d0)";
+                    el.style.color = "var(--text-heading, #e8e0d0)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = "rgba(255,255,255,0.12)";
-                    el.style.color = "rgba(255,255,255,0.65)";
+                    el.style.borderColor = "var(--border-card, rgba(255,255,255,0.12))";
+                    el.style.color = "var(--text-body, rgba(255,255,255,0.65))";
                   }}
                 >
                   {icon}
@@ -399,11 +403,12 @@ export const HeroSection = () => {
                     height: "38px",
                     padding: "0 14px",
                     borderRadius: "999px",
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
+                    background: "var(--bg-surface, transparent)",
                     display: "flex",
                     alignItems: "center",
                     gap: "7px",
-                    color: "rgba(255,255,255,0.65)",
+                    color: "var(--text-body, rgba(255,255,255,0.65))",
                     textDecoration: "none",
                     transition: "all 0.2s",
                     cursor: "none",
@@ -412,13 +417,13 @@ export const HeroSection = () => {
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = "#e8e0d0";
-                    el.style.color = "#e8e0d0";
+                    el.style.borderColor = "var(--border-strong, #e8e0d0)";
+                    el.style.color = "var(--text-heading, #e8e0d0)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
-                    el.style.borderColor = "rgba(255,255,255,0.12)";
-                    el.style.color = "rgba(255,255,255,0.65)";
+                    el.style.borderColor = "var(--border-card, rgba(255,255,255,0.12))";
+                    el.style.color = "var(--text-body, rgba(255,255,255,0.65))";
                   }}
                 >
                   <FileDown size={14} strokeWidth={1.5} />
@@ -444,12 +449,12 @@ export const HeroSection = () => {
                 style={{
                   height: "38px",
                   borderRadius: "999px",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   gap: "7px",
-                  color: "rgba(255,255,255,0.65)",
+                  color: "var(--text-body, rgba(255,255,255,0.65))",
                   textDecoration: "none",
                   transition: "all 0.2s",
                   cursor: "pointer",
@@ -478,8 +483,9 @@ export const HeroSection = () => {
                 justifyContent: "center",
                 gap: "10px",
                 padding: "10px 16px",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
                 borderRadius: "4px",
+                background: "var(--bg-surface, transparent)",
               }}
             >
               <div
@@ -497,7 +503,7 @@ export const HeroSection = () => {
                   fontFamily: FONT_MONO,
                   fontSize: "0.55rem",
                   letterSpacing: "0.2em",
-                  color: "rgba(255,255,255,0.55)",
+                  color: "var(--text-muted, rgba(255,255,255,0.55))",
                   textTransform: "uppercase",
                 }}
               >
@@ -542,12 +548,12 @@ export const HeroSection = () => {
                       padding: "8px 14px",
                       borderRadius: "999px",
                       border: isActive
-                        ? "1px solid #e8e0d0"
-                        : "1px solid rgba(255,255,255,0.12)",
+                        ? "1px solid var(--text-heading, #e8e0d0)"
+                        : "1px solid var(--border-card, rgba(255,255,255,0.12))",
                       background: isActive
-                        ? "rgba(255,255,255,0.08)"
-                        : "transparent",
-                      color: isActive ? "#e8e0d0" : "rgba(255,255,255,0.65)",
+                        ? "var(--pill-bg-active, rgba(255,255,255,0.08))"
+                        : "var(--bg-surface, transparent)",
+                      color: isActive ? "var(--text-heading, #e8e0d0)" : "var(--text-body, rgba(255,255,255,0.65))",
                       cursor: isTouchDevice ? "pointer" : "none",
                       display: "flex",
                       alignItems: "center",
@@ -585,11 +591,10 @@ export const HeroSection = () => {
                     fontFamily: FONT_MONO,
                     fontSize: "0.62rem",
                     letterSpacing: "0.15em",
-                    color: "#e8e0d0",
+                    color: "var(--text-accent, #e8e0d0)",
                     textTransform: "uppercase",
                   }}
                 >
-                  <Sparkles size={13} className="text-amber-300 animate-pulse" />
                   <span>{selectedDomainData.highlight}</span>
                 </div>
 
@@ -609,11 +614,11 @@ export const HeroSection = () => {
                         fontFamily: FONT_MONO,
                         fontSize: "0.72rem",
                         letterSpacing: "0.1em",
-                        color: "rgba(255,255,255,0.85)",
+                        color: "var(--text-heading, rgba(255,255,255,0.85))",
                         padding: "8px 16px",
                         borderRadius: "999px",
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "transparent",
+                        border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
+                        background: "var(--pill-bg, transparent)",
                       }}
                     >
                       {skill}
@@ -631,7 +636,7 @@ export const HeroSection = () => {
                 gap: "1rem",
                 marginTop: "1.5rem",
                 paddingTop: "1.5rem",
-                borderTop: "1px solid rgba(255,255,255,0.08)",
+                borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
               }}
             >
               <div>
@@ -640,7 +645,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_SERIF,
                     fontSize: "2rem",
                     fontWeight: 800,
-                    color: "#fafaf8",
+                    color: "var(--text-heading, #fafaf8)",
                     lineHeight: 1,
                   }}
                 >
@@ -651,7 +656,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_MONO,
                     fontSize: "0.58rem",
                     letterSpacing: "0.12em",
-                    color: "rgba(255,255,255,0.45)",
+                    color: "var(--text-muted, rgba(255,255,255,0.45))",
                     textTransform: "uppercase",
                     marginTop: "0.3rem",
                   }}
@@ -666,7 +671,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_SERIF,
                     fontSize: "2rem",
                     fontWeight: 800,
-                    color: "#e8e0d0",
+                    color: "var(--text-heading, #e8e0d0)",
                     lineHeight: 1,
                   }}
                 >
@@ -677,7 +682,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_MONO,
                     fontSize: "0.58rem",
                     letterSpacing: "0.12em",
-                    color: "rgba(255,255,255,0.45)",
+                    color: "var(--text-muted, rgba(255,255,255,0.45))",
                     textTransform: "uppercase",
                     marginTop: "0.3rem",
                   }}
@@ -692,7 +697,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_SERIF,
                     fontSize: "2rem",
                     fontWeight: 800,
-                    color: "#fafaf8",
+                    color: "var(--text-heading, #fafaf8)",
                     lineHeight: 1,
                   }}
                 >
@@ -703,7 +708,7 @@ export const HeroSection = () => {
                     fontFamily: FONT_MONO,
                     fontSize: "0.58rem",
                     letterSpacing: "0.12em",
-                    color: "rgba(255,255,255,0.45)",
+                    color: "var(--text-muted, rgba(255,255,255,0.45))",
                     textTransform: "uppercase",
                     marginTop: "0.3rem",
                   }}

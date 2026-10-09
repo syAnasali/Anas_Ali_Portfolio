@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Compass, FolderGit2, Award, Briefcase, Mail, Phone, Github, Linkedin, Terminal, Sparkles, MessageCircle, ArrowRight, X } from "lucide-react";
+import { scrollToSection } from "../hooks/useHashScroll";
 
 const FONT_SERIF = '"Playfair Display", Georgia, serif';
 const FONT_MONO = '"DM Mono", monospace';
@@ -13,7 +14,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Compass size={16} className="text-cyan-400" />,
     action: () => {
-      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("hero");
+      history.replaceState(null, "", window.location.pathname);
     },
   },
   {
@@ -22,7 +24,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Sparkles size={16} className="text-amber-400" />,
     action: () => {
-      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("about");
+      history.replaceState(null, "", "#about");
     },
   },
   {
@@ -31,7 +34,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Sparkles size={16} className="text-purple-400" />,
     action: () => {
-      document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("skills");
+      history.replaceState(null, "", "#skills");
     },
   },
   {
@@ -40,7 +44,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <FolderGit2 size={16} className="text-blue-400" />,
     action: () => {
-      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("projects");
+      history.replaceState(null, "", "#projects");
     },
   },
   {
@@ -49,7 +54,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Award size={16} className="text-yellow-400" />,
     action: () => {
-      document.getElementById("certificates")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("certificates");
+      history.replaceState(null, "", "#certificates");
     },
   },
   {
@@ -58,7 +64,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Briefcase size={16} className="text-emerald-400" />,
     action: () => {
-      document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("experience");
+      history.replaceState(null, "", "#experience");
     },
   },
   {
@@ -67,7 +74,8 @@ const COMMANDS = [
     category: "Navigation",
     icon: <Mail size={16} className="text-pink-400" />,
     action: () => {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection("contact");
+      history.replaceState(null, "", "#contact");
     },
   },
   {
@@ -190,9 +198,9 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
               width: "90%",
               maxWidth: "600px",
               borderRadius: "10px",
-              border: "1px solid rgba(255,255,255,0.15)",
-              background: "#0c0c0e",
-              boxShadow: "0 20px 50px rgba(0,0,0,0.8)",
+              border: "1px solid var(--border-card, rgba(255,255,255,0.15))",
+              background: "var(--bg-card, #0c0c0e)",
+              boxShadow: "var(--modal-shadow, 0 20px 50px rgba(0,0,0,0.8))",
               overflow: "hidden",
             }}
           >
@@ -203,10 +211,10 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                 alignItems: "center",
                 gap: "12px",
                 padding: "1rem 1.2rem",
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
+                borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
               }}
             >
-              <Search size={18} className="text-neutral-400" />
+              <Search size={18} style={{ color: "var(--text-muted, #a3a3a3)", flexShrink: 0 }} />
               <input
                 ref={inputRef}
                 type="text"
@@ -219,7 +227,7 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                   background: "transparent",
                   border: "none",
                   outline: "none",
-                  color: "#fafaf8",
+                  color: "var(--text-heading, #fafaf8)",
                   fontFamily: FONT_SANS,
                   fontSize: "0.95rem",
                 }}
@@ -228,8 +236,8 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                 style={{
                   fontFamily: FONT_MONO,
                   fontSize: "0.55rem",
-                  color: "rgba(255,255,255,0.4)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  color: "var(--text-muted, rgba(255,255,255,0.4))",
+                  border: "1px solid var(--border-subtle, rgba(255,255,255,0.12))",
                   padding: "2px 6px",
                   borderRadius: "4px",
                 }}
@@ -251,7 +259,7 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                   style={{
                     padding: "2rem 1rem",
                     textAlign: "center",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "var(--text-muted, rgba(255,255,255,0.4))",
                     fontFamily: FONT_MONO,
                     fontSize: "0.8rem",
                   }}
@@ -275,19 +283,19 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                         justifyContent: "space-between",
                         padding: "10px 14px",
                         borderRadius: "6px",
-                        background: isSelected ? "rgba(255,255,255,0.08)" : "transparent",
+                        background: isSelected ? "var(--pill-bg-active, rgba(255,255,255,0.08))" : "transparent",
                         cursor: "pointer",
                         transition: "background 0.15s ease",
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                        <div style={{ color: "#e8e0d0" }}>{cmd.icon}</div>
+                        <div style={{ color: isSelected ? "var(--text-heading, #ffffff)" : "var(--text-body, #e8e0d0)" }}>{cmd.icon}</div>
                         <div>
                           <span
                             style={{
                               fontFamily: FONT_SANS,
                               fontSize: "0.9rem",
-                              color: isSelected ? "#ffffff" : "rgba(255,255,255,0.85)",
+                              color: isSelected ? "var(--text-heading, #ffffff)" : "var(--text-body, rgba(255,255,255,0.85))",
                               display: "block",
                               fontWeight: isSelected ? 600 : 400,
                             }}
@@ -303,13 +311,13 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                             fontFamily: FONT_MONO,
                             fontSize: "0.52rem",
                             letterSpacing: "0.1em",
-                            color: "rgba(255,255,255,0.4)",
+                            color: "var(--text-muted, rgba(255,255,255,0.4))",
                             textTransform: "uppercase",
                           }}
                         >
                           {cmd.category}
                         </span>
-                        <ArrowRight size={14} style={{ color: isSelected ? "#e8e0d0" : "transparent" }} />
+                        <ArrowRight size={14} style={{ color: isSelected ? "var(--text-heading, #e8e0d0)" : "transparent" }} />
                       </div>
                     </div>
                   );
@@ -324,11 +332,11 @@ export const CommandPalette = ({ isOpen, onClose, onOpenTerminal }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 padding: "8px 16px",
-                background: "rgba(0,0,0,0.5)",
-                borderTop: "1px solid rgba(255,255,255,0.06)",
+                background: "var(--bg-surface-elevated, rgba(0,0,0,0.5))",
+                borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.06))",
                 fontFamily: FONT_MONO,
                 fontSize: "0.55rem",
-                color: "rgba(255,255,255,0.4)",
+                color: "var(--text-muted, rgba(255,255,255,0.4))",
               }}
             >
               <div style={{ display: "flex", gap: "12px" }}>

@@ -262,7 +262,7 @@ export const ProjectsSection = () => {
             fontFamily: FONT_MONO,
             fontSize: "0.62rem",
             letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.4)",
+            color: "var(--text-muted, rgba(255,255,255,0.4))",
             textTransform: "uppercase",
           }}
         >
@@ -272,7 +272,7 @@ export const ProjectsSection = () => {
           style={{
             flex: 1,
             height: "1px",
-            background: "rgba(255,255,255,0.07)",
+            background: "var(--border-subtle, rgba(255,255,255,0.07))",
           }}
         />
       </div>
@@ -298,7 +298,7 @@ export const ProjectsSection = () => {
               fontWeight: 800,
               lineHeight: 1.08,
               letterSpacing: "0.02em",
-              color: "#fafaf8",
+              color: "var(--text-heading, #fafaf8)",
               margin: 0,
             }}
           >
@@ -309,7 +309,7 @@ export const ProjectsSection = () => {
               fontFamily: FONT_SANS,
               fontSize: "0.95rem",
               lineHeight: 1.6,
-              color: "rgba(255,255,255,0.55)",
+              color: "var(--text-body, rgba(255,255,255,0.55))",
               maxWidth: "540px",
               margin: "0.8rem 0 0",
             }}
@@ -324,10 +324,10 @@ export const ProjectsSection = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: "0.5rem",
-            background: "rgba(255,255,255,0.02)",
+            background: "var(--pill-bg, rgba(255,255,255,0.02))",
             padding: "5px",
             borderRadius: "8px",
-            border: "1px solid rgba(255,255,255,0.08)",
+            border: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
           }}
         >
           {CATEGORY_TABS.map((tab) => {
@@ -346,8 +346,8 @@ export const ProjectsSection = () => {
                   padding: "8px 14px",
                   borderRadius: "6px",
                   border: "none",
-                  background: isActive ? "rgba(255,255,255,0.12)" : "transparent",
-                  color: isActive ? "#fafaf8" : "rgba(255,255,255,0.5)",
+                  background: isActive ? "var(--pill-bg-active, rgba(255,255,255,0.12))" : "transparent",
+                  color: isActive ? "var(--text-heading, #fafaf8)" : "var(--text-muted, rgba(255,255,255,0.5))",
                   fontFamily: FONT_MONO,
                   fontSize: "0.62rem",
                   letterSpacing: "0.08em",
@@ -385,14 +385,15 @@ export const ProjectsSection = () => {
               transition={{ duration: 0.4, delay: idx * 0.05 }}
               style={{
                 borderRadius: "10px",
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(255,255,255,0.01)",
+                border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
+                background: "var(--bg-card, rgba(255,255,255,0.01))",
+                boxShadow: "var(--shadow-card, none)",
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
                 transition: "all 0.3s ease",
               }}
-              whileHover={{ y: -5, borderColor: "rgba(255,255,255,0.3)" }}
+              whileHover={{ y: -5, borderColor: "var(--border-strong, rgba(255,255,255,0.3))" }}
             >
               {/* Card Image Banner */}
               <div
@@ -402,7 +403,7 @@ export const ProjectsSection = () => {
                   position: "relative",
                   overflow: "hidden",
                   background: "rgba(0,0,0,0.6)",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                 }}
               >
                 <img
@@ -429,12 +430,12 @@ export const ProjectsSection = () => {
                     fontFamily: FONT_MONO,
                     fontSize: "0.55rem",
                     letterSpacing: "0.1em",
-                    color: "#e8e0d0",
-                    background: "rgba(0,0,0,0.75)",
+                    color: "var(--text-heading, #e8e0d0)",
+                    background: "var(--hud-bg, rgba(0,0,0,0.75))",
                     backdropFilter: "blur(6px)",
                     padding: "4px 10px",
                     borderRadius: "999px",
-                    border: "1px solid rgba(255,255,255,0.15)",
+                    border: "1px solid var(--border-card, rgba(255,255,255,0.15))",
                     textTransform: "uppercase",
                   }}
                 >
@@ -449,7 +450,7 @@ export const ProjectsSection = () => {
                     fontFamily: FONT_SERIF,
                     fontSize: "1.35rem",
                     fontWeight: 800,
-                    color: "#fafaf8",
+                    color: "var(--text-heading, #fafaf8)",
                     margin: "0 0 0.6rem",
                   }}
                 >
@@ -461,7 +462,7 @@ export const ProjectsSection = () => {
                     fontFamily: FONT_SANS,
                     fontSize: "0.88rem",
                     lineHeight: 1.6,
-                    color: "rgba(255,255,255,0.6)",
+                    color: "var(--text-body, rgba(255,255,255,0.6))",
                     margin: "0 0 1.2rem",
                     flex: 1,
                     textAlign: "justify",
@@ -486,11 +487,11 @@ export const ProjectsSection = () => {
                       style={{
                         fontFamily: FONT_MONO,
                         fontSize: "0.58rem",
-                        color: "rgba(255,255,255,0.7)",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        color: "var(--text-body, rgba(255,255,255,0.7))",
+                        border: "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
                         padding: "2px 8px",
                         borderRadius: "999px",
-                        background: "rgba(255,255,255,0.02)",
+                        background: "var(--pill-bg, rgba(255,255,255,0.02))",
                       }}
                     >
                       {tag}
@@ -505,7 +506,7 @@ export const ProjectsSection = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     paddingTop: "1rem",
-                    borderTop: "1px solid rgba(255,255,255,0.08)",
+                    borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                   }}
                 >
                   {/* Architecture Detail Trigger Button */}
@@ -514,7 +515,7 @@ export const ProjectsSection = () => {
                     style={{
                       background: "transparent",
                       border: "none",
-                      color: "#60a5fa",
+                      color: "var(--cat-frontend, #60a5fa)",
                       fontFamily: FONT_MONO,
                       fontSize: "0.62rem",
                       letterSpacing: "0.1em",
@@ -536,7 +537,7 @@ export const ProjectsSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="GitHub Repository"
-                      style={{ color: "rgba(255,255,255,0.6)", transition: "color 0.2s" }}
+                      style={{ color: "var(--text-muted, rgba(255,255,255,0.6))", transition: "color 0.2s" }}
                     >
                       <Github size={16} />
                     </a>
@@ -545,7 +546,7 @@ export const ProjectsSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Live System Link"
-                      style={{ color: "rgba(255,255,255,0.8)", transition: "color 0.2s" }}
+                      style={{ color: "var(--text-heading, rgba(255,255,255,0.8))", transition: "color 0.2s" }}
                     >
                       <ExternalLink size={16} />
                     </a>
@@ -565,9 +566,9 @@ export const ProjectsSection = () => {
             style={{
               padding: "12px 28px",
               borderRadius: "6px",
-              border: "1px solid rgba(255,255,255,0.18)",
-              background: "rgba(255,255,255,0.03)",
-              color: "#fafaf8",
+              border: "1px solid var(--border-strong, rgba(255,255,255,0.18))",
+              background: "var(--bg-surface-elevated, rgba(255,255,255,0.03))",
+              color: "var(--text-heading, #fafaf8)",
               fontFamily: FONT_MONO,
               fontSize: "0.7rem",
               letterSpacing: "0.15em",
@@ -593,7 +594,7 @@ export const ProjectsSection = () => {
               alignItems: "center",
               justifyContent: "center",
               padding: "1.5rem",
-              background: "rgba(0,0,0,0.85)",
+              background: "var(--modal-backdrop, rgba(0,0,0,0.85))",
               backdropFilter: "blur(10px)",
             }}
             onClick={() => setSelectedProject(null)}
@@ -610,11 +611,11 @@ export const ProjectsSection = () => {
                 maxHeight: "85vh",
                 overflowY: "auto",
                 borderRadius: "10px",
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "#0c0c0e",
+                border: "1px solid var(--border-card, rgba(255,255,255,0.2))",
+                background: "var(--bg-card, #0c0c0e)",
                 padding: "2rem",
-                boxShadow: "0 25px 60px rgba(0,0,0,0.9)",
-                color: "#fafaf8",
+                boxShadow: "var(--modal-shadow, 0 25px 60px rgba(0,0,0,0.9))",
+                color: "var(--text-heading, #fafaf8)",
               }}
             >
               {/* Header Bar */}
@@ -624,7 +625,7 @@ export const ProjectsSection = () => {
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                   marginBottom: "1.5rem",
-                  borderBottom: "1px solid rgba(255,255,255,0.1)",
+                  borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
                   paddingBottom: "1rem",
                 }}
               >
@@ -634,7 +635,7 @@ export const ProjectsSection = () => {
                       fontFamily: FONT_MONO,
                       fontSize: "0.58rem",
                       letterSpacing: "0.15em",
-                      color: "#60a5fa",
+                      color: "var(--cat-frontend, #60a5fa)",
                       textTransform: "uppercase",
                       display: "block",
                       marginBottom: "4px",
@@ -648,7 +649,7 @@ export const ProjectsSection = () => {
                       fontSize: "1.8rem",
                       fontWeight: 800,
                       margin: 0,
-                      color: "#fafaf8",
+                      color: "var(--text-heading, #fafaf8)",
                     }}
                   >
                     {selectedProject.title}
@@ -660,7 +661,7 @@ export const ProjectsSection = () => {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: "rgba(255,255,255,0.5)",
+                    color: "var(--text-muted, rgba(255,255,255,0.5))",
                     cursor: "pointer",
                     padding: 0,
                   }}
@@ -678,7 +679,7 @@ export const ProjectsSection = () => {
                         fontFamily: FONT_MONO,
                         fontSize: "0.6rem",
                         letterSpacing: "0.12em",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--text-muted, rgba(255,255,255,0.45))",
                         textTransform: "uppercase",
                         display: "block",
                         marginBottom: "6px",
@@ -690,11 +691,11 @@ export const ProjectsSection = () => {
                       style={{
                         fontFamily: FONT_MONO,
                         fontSize: "0.75rem",
-                        color: "#e8e0d0",
+                        color: "var(--text-body, #e8e0d0)",
                         padding: "12px 16px",
                         borderRadius: "6px",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        background: "rgba(255,255,255,0.02)",
+                        border: "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
+                        background: "var(--bg-surface-elevated, rgba(255,255,255,0.02))",
                         lineHeight: 1.5,
                       }}
                     >
@@ -709,7 +710,7 @@ export const ProjectsSection = () => {
                         fontFamily: FONT_MONO,
                         fontSize: "0.6rem",
                         letterSpacing: "0.12em",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--text-muted, rgba(255,255,255,0.45))",
                         textTransform: "uppercase",
                         display: "block",
                         marginBottom: "8px",
@@ -725,7 +726,7 @@ export const ProjectsSection = () => {
                             style={{
                               fontFamily: FONT_SANS,
                               fontSize: "0.88rem",
-                              color: "rgba(255,255,255,0.75)",
+                              color: "var(--text-body, rgba(255,255,255,0.75))",
                               margin: 0,
                               lineHeight: 1.5,
                             }}
@@ -743,14 +744,14 @@ export const ProjectsSection = () => {
                       style={{
                         padding: "10px 14px",
                         borderRadius: "6px",
-                        border: "1px solid rgba(96,165,250,0.3)",
-                        background: "rgba(96,165,250,0.06)",
+                        border: "1px solid var(--border-subtle, rgba(96,165,250,0.3))",
+                        background: "var(--bg-surface-elevated, rgba(96,165,250,0.06))",
                         display: "flex",
                         alignItems: "center",
                         gap: "8px",
                         fontFamily: FONT_MONO,
                         fontSize: "0.7rem",
-                        color: "#60a5fa",
+                        color: "var(--cat-frontend, #60a5fa)",
                       }}
                     >
                       <Terminal size={14} />
@@ -767,7 +768,7 @@ export const ProjectsSection = () => {
                   gap: "1rem",
                   marginTop: "2rem",
                   paddingTop: "1.2rem",
-                  borderTop: "1px solid rgba(255,255,255,0.1)",
+                  borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.1))",
                 }}
               >
                 <a
@@ -778,9 +779,9 @@ export const ProjectsSection = () => {
                     flex: 1,
                     padding: "10px",
                     borderRadius: "6px",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    background: "rgba(255,255,255,0.03)",
-                    color: "#fafaf8",
+                    border: "1px solid var(--border-card, rgba(255,255,255,0.2))",
+                    background: "var(--bg-surface-elevated, rgba(255,255,255,0.03))",
+                    color: "var(--text-heading, #fafaf8)",
                     fontFamily: FONT_MONO,
                     fontSize: "0.68rem",
                     letterSpacing: "0.1em",
@@ -804,9 +805,9 @@ export const ProjectsSection = () => {
                     flex: 1,
                     padding: "10px",
                     borderRadius: "6px",
-                    border: "1px solid #e8e0d0",
-                    background: "#e8e0d0",
-                    color: "#000000",
+                    border: "1px solid var(--accent-button-bg, #e8e0d0)",
+                    background: "var(--accent-button-bg, #e8e0d0)",
+                    color: "var(--accent-button-text, #000000)",
                     fontFamily: FONT_MONO,
                     fontSize: "0.68rem",
                     fontWeight: 700,

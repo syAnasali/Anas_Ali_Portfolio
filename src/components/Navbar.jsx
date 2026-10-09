@@ -5,18 +5,18 @@ import { useIsMobile, useIsTouchDevice } from "../hooks/useMediaQuery";
 import { scrollToSection } from "../hooks/useHashScroll";
 
 const navBeforeWork = [
-  { label: "About", href: "/about", section: "about" },
-  { label: "Skills", href: "/skills", section: "skills" },
+  { label: "About", href: "#about", section: "about" },
+  { label: "Skills", href: "#skills", section: "skills" },
 ];
 
 const workItems = [
-  { label: "Projects", href: "/projects", section: "projects" },
-  { label: "Certifications", href: "/certificates", section: "certificates" },
+  { label: "Projects", href: "#projects", section: "projects" },
+  { label: "Certifications", href: "#certificates", section: "certificates" },
 ];
 
 const navAfterWork = [
-  { label: "Experience", href: "/experience", section: "experience" },
-  { label: "Contact", href: "/contact", section: "contact" },
+  { label: "Experience", href: "#experience", section: "experience" },
+  { label: "Contact", href: "#contact", section: "contact" },
 ];
 
 const navLinkStyle = {
@@ -24,7 +24,7 @@ const navLinkStyle = {
   fontSize: "0.65rem",
   letterSpacing: "0.13em",
   textTransform: "uppercase",
-  color: "rgba(255,255,255,0.35)",
+  color: "var(--text-muted, rgba(255,255,255,0.35))",
   textDecoration: "none",
   background: "transparent",
   display: "flex",
@@ -88,7 +88,7 @@ export const Navbar = () => {
           left: isMobile ? "5.5vw" : "8.5vw",
           right: isMobile ? "5.5vw" : "8.5vw",
           height: "1px",
-          background: "rgba(255,255,255,0.08)",
+          background: "var(--border-subtle, rgba(255,255,255,0.08))",
           transformOrigin: "left",
           zIndex: 5,
           pointerEvents: "none",
@@ -109,15 +109,15 @@ export const Navbar = () => {
               top: 18,
               right: "5.5vw",
               zIndex: 9999,
-              background: "rgba(10,10,10,0.85)",
-              border: "1px solid rgba(255,255,255,0.18)",
+              background: "var(--bg-surface-elevated, rgba(10,10,10,0.85))",
+              border: "1px solid var(--border-card, rgba(255,255,255,0.18))",
               borderRadius: "4px",
               width: "38px",
               height: "38px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#fafaf8",
+              color: "var(--text-heading, #fafaf8)",
               cursor: "pointer",
               padding: 0,
               backdropFilter: "blur(8px)",
@@ -161,7 +161,7 @@ export const Navbar = () => {
                 style={{
                   position: "fixed",
                   inset: 0,
-                  background: "#030303",
+                  background: "var(--bg-page, #030303)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
                   zIndex: 9998,
@@ -183,7 +183,7 @@ export const Navbar = () => {
                 >
                   {/* Item 01: About */}
                   <motion.a
-                    href="/about"
+                    href="#about"
                     initial={{ opacity: 0, x: -45 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.08, duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
@@ -191,17 +191,17 @@ export const Navbar = () => {
                       e.preventDefault();
                       setMenuOpen(false);
                       scrollToSection("about");
-                      history.pushState(null, "", "/about");
+                      history.replaceState(null, "", "#about");
                     }}
                     style={{
                       fontFamily: '"DM Mono", monospace',
                       fontSize: "0.82rem",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.85)",
+                      color: "var(--text-heading, rgba(255,255,255,0.85))",
                       textDecoration: "none",
                       padding: "1.2rem 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                       display: "block",
                       textAlign: "left",
                     }}
@@ -211,7 +211,7 @@ export const Navbar = () => {
 
                   {/* Item 02: Skills */}
                   <motion.a
-                    href="/skills"
+                    href="#skills"
                     initial={{ opacity: 0, x: -45 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.14, duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
@@ -219,17 +219,17 @@ export const Navbar = () => {
                       e.preventDefault();
                       setMenuOpen(false);
                       scrollToSection("skills");
-                      history.pushState(null, "", "/skills");
+                      history.replaceState(null, "", "#skills");
                     }}
                     style={{
                       fontFamily: '"DM Mono", monospace',
                       fontSize: "0.82rem",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.85)",
+                      color: "var(--text-heading, rgba(255,255,255,0.85))",
                       textDecoration: "none",
                       padding: "1.2rem 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                       display: "block",
                       textAlign: "left",
                     }}
@@ -249,7 +249,7 @@ export const Navbar = () => {
                         width: "100%",
                         background: "transparent",
                         border: "none",
-                        borderBottom: "1px solid rgba(255,255,255,0.08)",
+                        borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                         padding: "1.2rem 0",
                         display: "flex",
                         alignItems: "center",
@@ -258,7 +258,7 @@ export const Navbar = () => {
                         fontSize: "0.82rem",
                         letterSpacing: "0.18em",
                         textTransform: "uppercase",
-                        color: "rgba(255,255,255,0.85)",
+                        color: "var(--text-heading, rgba(255,255,255,0.85))",
                         cursor: "pointer",
                         textAlign: "left",
                       }}
@@ -298,7 +298,7 @@ export const Navbar = () => {
                                 setMenuOpen(false);
                                 setMobileWorkOpen(false);
                                 scrollToSection(section);
-                                history.pushState(null, "", href);
+                                history.replaceState(null, "", href);
                               }}
                               style={{
                                 display: "block",
@@ -306,10 +306,10 @@ export const Navbar = () => {
                                 fontSize: "0.72rem",
                                 letterSpacing: "0.15em",
                                 textTransform: "uppercase",
-                                color: "rgba(255,255,255,0.65)",
+                                color: "var(--text-body, rgba(255,255,255,0.65))",
                                 textDecoration: "none",
                                 padding: "0.85rem 0 0.85rem 1.25rem",
-                                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                                borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.04))",
                                 textAlign: "left",
                               }}
                             >
@@ -323,7 +323,7 @@ export const Navbar = () => {
 
                   {/* Item 04: Experience */}
                   <motion.a
-                    href="/experience"
+                    href="#experience"
                     initial={{ opacity: 0, x: -45 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.26, duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
@@ -331,17 +331,17 @@ export const Navbar = () => {
                       e.preventDefault();
                       setMenuOpen(false);
                       scrollToSection("experience");
-                      history.pushState(null, "", "/experience");
+                      history.replaceState(null, "", "#experience");
                     }}
                     style={{
                       fontFamily: '"DM Mono", monospace',
                       fontSize: "0.82rem",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.85)",
+                      color: "var(--text-heading, rgba(255,255,255,0.85))",
                       textDecoration: "none",
                       padding: "1.2rem 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                       display: "block",
                       textAlign: "left",
                     }}
@@ -351,7 +351,7 @@ export const Navbar = () => {
 
                   {/* Item 05: Contact */}
                   <motion.a
-                    href="/contact"
+                    href="#contact"
                     initial={{ opacity: 0, x: -45 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.32, duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
@@ -359,17 +359,17 @@ export const Navbar = () => {
                       e.preventDefault();
                       setMenuOpen(false);
                       scrollToSection("contact");
-                      history.pushState(null, "", "/contact");
+                      history.replaceState(null, "", "#contact");
                     }}
                     style={{
                       fontFamily: '"DM Mono", monospace',
                       fontSize: "0.82rem",
                       letterSpacing: "0.18em",
                       textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.85)",
+                      color: "var(--text-heading, rgba(255,255,255,0.85))",
                       textDecoration: "none",
                       padding: "1.2rem 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
                       display: "block",
                       textAlign: "left",
                     }}
@@ -408,19 +408,19 @@ export const Navbar = () => {
                 if (section) {
                   e.preventDefault();
                   scrollToSection(section);
-                  history.pushState(null, "", href);
+                  history.replaceState(null, "", href);
                 }
               }}
               style={navLinkStyle}
               onMouseEnter={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.9)";
+                el.style.color = "var(--text-heading, rgba(255,255,255,0.9))";
                 el.style.background =
                   "linear-gradient(to top, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0) 100%)";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.35)";
+                el.style.color = "var(--text-muted, rgba(255,255,255,0.35))";
                 el.style.background = "transparent";
               }}
             >
@@ -442,7 +442,7 @@ export const Navbar = () => {
                 fontSize: "0.65rem",
                 letterSpacing: "0.13em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.35)",
+                color: "var(--text-muted, rgba(255,255,255,0.35))",
                 background: "transparent",
                 display: "flex",
                 alignItems: "center",
@@ -455,13 +455,13 @@ export const Navbar = () => {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.9)";
+                el.style.color = "var(--text-heading, rgba(255,255,255,0.9))";
                 el.style.background =
                   "linear-gradient(to top, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0) 100%)";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.35)";
+                el.style.color = "var(--text-muted, rgba(255,255,255,0.35))";
                 el.style.background = "transparent";
               }}
             >
@@ -492,8 +492,8 @@ export const Navbar = () => {
                     top: "calc(100% + 2px)",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    background: "rgba(6,6,6,0.85)",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    background: "var(--bg-surface, rgba(6,6,6,0.85))",
+                    border: "1px solid var(--border-card, rgba(255,255,255,0.1))",
                     borderRadius: "4px",
                     padding: "0.5rem 0",
                     minWidth: "180px",
@@ -510,7 +510,7 @@ export const Navbar = () => {
                         e.preventDefault();
                         setWorkOpen(false);
                         scrollToSection(section);
-                        history.pushState(null, "", href);
+                        history.replaceState(null, "", href);
                       }}
                       style={{
                         display: "block",
@@ -518,7 +518,7 @@ export const Navbar = () => {
                         fontSize: "0.62rem",
                         letterSpacing: "0.13em",
                         textTransform: "uppercase",
-                        color: "rgba(255,255,255,0.4)",
+                        color: "var(--text-muted, rgba(255,255,255,0.4))",
                         textDecoration: "none",
                         padding: "0.75rem 1.3rem",
                         cursor: isTouchDevice ? "pointer" : "none",
@@ -526,12 +526,12 @@ export const Navbar = () => {
                       }}
                       onMouseEnter={(e) => {
                         const el = e.currentTarget;
-                        el.style.color = "rgba(255,255,255,0.9)";
-                        el.style.background = "rgba(255,255,255,0.05)";
+                        el.style.color = "var(--text-heading, rgba(255,255,255,0.9))";
+                        el.style.background = "var(--pill-bg-active, rgba(255,255,255,0.05))";
                       }}
                       onMouseLeave={(e) => {
                         const el = e.currentTarget;
-                        el.style.color = "rgba(255,255,255,0.4)";
+                        el.style.color = "var(--text-muted, rgba(255,255,255,0.4))";
                         el.style.background = "transparent";
                       }}
                     >
@@ -551,19 +551,19 @@ export const Navbar = () => {
                 if (section) {
                   e.preventDefault();
                   scrollToSection(section);
-                  history.pushState(null, "", href);
+                  history.replaceState(null, "", href);
                 }
               }}
               style={navLinkStyle}
               onMouseEnter={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.9)";
+                el.style.color = "var(--text-heading, rgba(255,255,255,0.9))";
                 el.style.background =
                   "linear-gradient(to top, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0) 100%)";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget;
-                el.style.color = "rgba(255,255,255,0.35)";
+                el.style.color = "var(--text-muted, rgba(255,255,255,0.35))";
                 el.style.background = "transparent";
               }}
             >

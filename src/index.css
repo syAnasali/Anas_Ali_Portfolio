@@ -66,12 +66,9 @@
   :root {
     --background: 222 47% 4%;
     --foreground: 213 31% 91%;
-
     --card: 222 47% 8%;
-
     --primary: 250 65% 65%;
     --primary-foreground: 213 31% 91%;
-
     --border: 217 33% 20%;
 
     --room-black: #000000;
@@ -81,17 +78,91 @@
     --font-sans: 'DM Sans', system-ui, sans-serif;
     --font-mono: 'DM Mono', monospace;
     --cursor-color: rgba(255, 255, 255, 0.92);
+
+    /* Universal Design Tokens - Dark Theme */
+    --bg-page: #000000;
+    --bg-surface: rgba(255, 255, 255, 0.02);
+    --bg-surface-elevated: rgba(255, 255, 255, 0.04);
+    --bg-card: rgba(255, 255, 255, 0.01);
+    --bg-input: rgba(0, 0, 0, 0.45);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-card: rgba(255, 255, 255, 0.12);
+    --border-strong: rgba(255, 255, 255, 0.22);
+    --text-heading: #fafaf8;
+    --text-body: rgba(255, 255, 255, 0.65);
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --text-faint: rgba(255, 255, 255, 0.3);
+    --text-accent: #e8e0d0;
+    --accent-button-bg: #e8e0d0;
+    --accent-button-text: #000000;
+    --pill-bg: rgba(255, 255, 255, 0.03);
+    --pill-bg-active: rgba(255, 255, 255, 0.12);
+    --pill-text: rgba(255, 255, 255, 0.85);
+    --hud-bg: rgba(12, 12, 14, 0.85);
+    --hud-text: #ffffff;
+    --hud-border: rgba(255, 255, 255, 0.15);
+    --shadow-card: none;
+    --modal-backdrop: rgba(0, 0, 0, 0.85);
+    --modal-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+    --cat-lang: #a78bfa;
+    --cat-frontend: #60a5fa;
+    --cat-backend: #10b981;
+    --cat-ai: #f5ca40;
+    --cat-devops: #22d3ee;
+    --cat-robotics: #f97316;
+    --cat-tools: #f472b6;
+    --scrollbar-track: rgba(255, 255, 255, 0.08);
+    --scrollbar-thumb: rgba(255, 255, 255, 0.45);
+    --scrollbar-thumb-hover: #38bdf8;
+    --scrollbar-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
   }
 
-  /* Light Theme Color Overrides - Icy Blueprint Slate */
+  /* Universal Design Tokens - High-Contrast Professional Light Theme */
   [data-theme="light"] {
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --room-black: #f1f5f9;
+    --room-black: #f8fafc;
     --holo-text: #0f172a;
-    --holo-glow: rgba(0, 0, 0, 0.02);
+    --holo-glow: rgba(0, 0, 0, 0);
     --cursor-color: rgba(15, 23, 42, 0.95);
+
+    /* Universal Design Tokens - Light Theme */
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --border-subtle: rgba(15, 23, 42, 0.08);
+    --border-card: rgba(15, 23, 42, 0.12);
+    --border-strong: rgba(15, 23, 42, 0.24);
+    --text-heading: #0f172a;
+    --text-body: #334155;
+    --text-muted: #475569;
+    --text-faint: #64748b;
+    --text-accent: #0f172a;
+    --accent-button-bg: #0f172a;
+    --accent-button-text: #ffffff;
+    --pill-bg: #ffffff;
+    --pill-bg-active: #e2e8f0;
+    --pill-text: #0f172a;
+    --hud-bg: #ffffff;
+    --hud-text: #0f172a;
+    --hud-border: rgba(15, 23, 42, 0.12);
+    --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.06);
+    --modal-backdrop: rgba(15, 23, 42, 0.6);
+    --modal-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    --cat-lang: #6d28d9;
+    --cat-frontend: #1d4ed8;
+    --cat-backend: #047857;
+    --cat-ai: #b45309;
+    --cat-devops: #0369a1;
+    --cat-robotics: #c2410c;
+    --cat-tools: #be185d;
+    --scrollbar-track: rgba(15, 23, 42, 0.08);
+    --scrollbar-thumb: rgba(15, 23, 42, 0.4);
+    --scrollbar-thumb-hover: #0284c7;
+    --scrollbar-shadow: 0 1px 4px rgba(15, 23, 42, 0.15);
   }
 
   * {
@@ -121,11 +192,12 @@ body {
   height: 100%;
   margin: 0;
   background: var(--room-black);
-  overflow-x: clip;
+  overflow: hidden;
 }
 
 .spatial-scene {
   position: relative;
+  min-height: 100vh;
   min-height: 100dvh;
 }
 
@@ -142,18 +214,42 @@ body {
 .hologram-interface {
   position: relative;
   z-index: 3;
+  height: 100vh;
   height: 100dvh;
   overflow-y: auto;
-  overflow-x: clip;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  touch-action: pan-y;
+  overscroll-behavior-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .hologram-interface::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+}
+
+.hologram-interface::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 6px 0;
+}
+
+.hologram-interface::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hologram-interface::-webkit-scrollbar-thumb:hover {
+  background-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+.hologram-interface::-webkit-scrollbar-thumb:active {
+  background-color: #0ea5e9;
 }
 
 .hologram-content {
@@ -161,71 +257,108 @@ body {
   text-shadow: 0 0 14px var(--holo-glow);
 }
 
-/* Light Theme High Contrast & Blueprint Styling Protection */
+/* =========================================================
+   LIGHT THEME HIGH-CONTRAST GLOBAL OVERRIDES
+   ========================================================= */
+
+[data-theme="light"] html,
+[data-theme="light"] body,
+[data-theme="light"] #root,
+[data-theme="light"] .spatial-scene,
 [data-theme="light"] .spatial-environment,
 [data-theme="light"] .hologram-interface {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
   color: #0f172a !important;
 }
 
-[data-theme="light"] section {
-  color: #0f172a !important;
+[data-theme="light"] .hologram-content {
+  text-shadow: none !important;
 }
 
+/* Headings in Light Mode */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
-[data-theme="light"] h4 {
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
   color: #0f172a !important;
 }
 
+/* Paragraphs in Light Mode */
 [data-theme="light"] p {
   color: #334155 !important;
 }
 
-/* Override inline white/cream text colors */
-[data-theme="light"] [style*="color: #fafaf8"],
-[data-theme="light"] [style*="color:#fafaf8"],
-[data-theme="light"] [style*="color: #ffffff"],
-[data-theme="light"] [style*="color:#ffffff"],
-[data-theme="light"] [style*="color: #e8e0d0"],
-[data-theme="light"] [style*="color:#e8e0d0"] {
+/* Form Inputs & Textareas in Light Mode */
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background-color: #ffffff !important;
   color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
 }
 
-[data-theme="light"] [style*="color: rgba(255, 255, 255"],
-[data-theme="light"] [style*="color:rgba(255,255,255"] {
-  color: #334155 !important;
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #94a3b8 !important;
 }
 
-/* Fix light theme skill pills, domain selector buttons, and card borders */
-[data-theme="light"] button {
-  color: #0f172a !important;
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus {
+  border-color: #0f172a !important;
+  box-shadow: 0 0 0 1px #0f172a !important;
 }
 
-[data-theme="light"] div[style*="border: 1px solid rgba(255, 255, 255"],
-[data-theme="light"] div[style*="border:1px solid rgba(255,255,255"],
-[data-theme="light"] button[style*="border: 1px solid rgba(255, 255, 255"],
-[data-theme="light"] span[style*="border: 1px solid rgba(255, 255, 255"] {
-  border-color: rgba(15, 23, 42, 0.18) !important;
-  background-color: rgba(255, 255, 255, 0.85) !important;
-  color: #0f172a !important;
+/* Form Labels in Light Mode */
+[data-theme="light"] label {
+  color: #475569 !important;
 }
 
-[data-theme="light"] div[style*="background: transparent"],
-[data-theme="light"] div[style*="background:transparent"] {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  border-color: rgba(15, 23, 42, 0.15) !important;
+/* WhatsApp Banner Text in Light Mode */
+[data-theme="light"] #contact a[href*="wa.me"] {
+  background: #f0fdf4 !important;
+  border-color: rgba(37, 211, 102, 0.35) !important;
 }
 
+[data-theme="light"] #contact a[href*="wa.me"] span[style*="font-family"] {
+  color: #14532d !important;
+}
+
+/* Light Theme Cards & Containers */
 [data-theme="light"] article {
   background-color: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.15) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Light theme cursor */
+/* Light Theme Scrollbar */
+[data-theme="light"] .hologram-interface {
+  scrollbar-color: rgba(15, 23, 42, 0.35) transparent;
+}
+
+[data-theme="light"] .hologram-interface::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 23, 42, 0.3);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+[data-theme="light"] .hologram-interface::-webkit-scrollbar-thumb:hover {
+  background-color: #0284c7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.4);
+}
+
+[data-theme="light"] .hologram-interface::-webkit-scrollbar-thumb:active {
+  background-color: #0369a1;
+}
+
+/* Light Theme ISS Cursor */
 [data-theme="light"] .iss-cursor {
   color: rgba(15, 23, 42, 0.95) !important;
   filter: drop-shadow(0 0 3px rgba(15, 23, 42, 0.3)) !important;
+}
+
+/* Light Theme Clock Widget & Bottom Right HUD */
+[data-theme="light"] #clock-widget,
+[data-theme="light"] #bottom-right-hud {
+  color: #0f172a !important;
 }

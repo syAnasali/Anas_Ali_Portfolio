@@ -100,7 +100,7 @@ export function AboutSection() {
                 fontFamily: FONT_MONO,
                 fontSize: "0.62rem",
                 letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.4)",
+                color: "var(--text-muted, rgba(255,255,255,0.4))",
                 textTransform: "uppercase",
               }}
             >
@@ -110,7 +110,7 @@ export function AboutSection() {
               style={{
                 flex: 1,
                 height: "1px",
-                background: "rgba(255,255,255,0.07)",
+                background: "var(--border-subtle, rgba(255,255,255,0.07))",
               }}
             />
           </div>
@@ -129,7 +129,7 @@ export function AboutSection() {
                 fontWeight: 800,
                 lineHeight: 1.05,
                 letterSpacing: "0.02em",
-                color: "#fafaf8",
+                color: "var(--text-heading, #fafaf8)",
                 margin: 0,
               }}
             >
@@ -151,9 +151,9 @@ export function AboutSection() {
                 fontFamily: FONT_SANS,
                 fontSize: isMobile ? "1rem" : "1.05rem",
                 lineHeight: 1.65,
-                color: "#e8e0d0",
+                color: "var(--text-heading, #e8e0d0)",
                 marginBottom: isMobile ? "2rem" : "2.5rem",
-                borderLeft: "2px solid rgba(232,224,208,0.3)",
+                borderLeft: "2px solid var(--border-strong, rgba(232,224,208,0.3))",
                 paddingLeft: "1rem",
                 maxWidth: "560px",
               }}
@@ -181,7 +181,7 @@ export function AboutSection() {
                     fontFamily: FONT_SANS,
                     fontSize: "0.95rem",
                     lineHeight: 1.8,
-                    color: "rgba(255,255,255,0.62)",
+                    color: "var(--text-body, rgba(255,255,255,0.62))",
                     marginBottom: "1.2rem",
                     maxWidth: "580px",
                     textAlign: "justify",
@@ -200,7 +200,7 @@ export function AboutSection() {
                     fontFamily: FONT_SANS,
                     fontSize: "0.95rem",
                     lineHeight: 1.8,
-                    color: "rgba(255,255,255,0.62)",
+                    color: "var(--text-body, rgba(255,255,255,0.62))",
                     marginBottom: "1.2rem",
                     maxWidth: "580px",
                     textAlign: "justify",
@@ -219,7 +219,7 @@ export function AboutSection() {
                     fontFamily: FONT_SANS,
                     fontSize: "0.95rem",
                     lineHeight: 1.8,
-                    color: "rgba(255,255,255,0.62)",
+                    color: "var(--text-body, rgba(255,255,255,0.62))",
                     marginBottom: 0,
                     maxWidth: "580px",
                     textAlign: "justify",
@@ -253,8 +253,8 @@ export function AboutSection() {
                         gap: "1.2rem",
                         padding: "1.4rem 1.6rem",
                         borderRadius: "8px",
-                        border: "1px solid rgba(255,255,255,0.15)",
-                        background: "transparent",
+                        border: "1px solid var(--border-card, rgba(255,255,255,0.15))",
+                        background: "var(--bg-card, transparent)",
                       }}
                     >
                       <div
@@ -262,10 +262,10 @@ export function AboutSection() {
                           width: "5px",
                           height: "5px",
                           borderRadius: "50%",
-                          background: "#e8e0d0",
+                          background: "var(--text-heading, #e8e0d0)",
                           marginTop: "7px",
                           flexShrink: 0,
-                          opacity: 0.6,
+                          opacity: 0.8,
                         }}
                       />
                       <div>
@@ -274,7 +274,7 @@ export function AboutSection() {
                             fontFamily: FONT_SERIF,
                             fontWeight: 800,
                             fontSize: "0.95rem",
-                            color: "#fafaf8",
+                            color: "var(--text-heading, #fafaf8)",
                             marginBottom: "6px",
                           }}
                         >
@@ -285,7 +285,7 @@ export function AboutSection() {
                             fontFamily: FONT_SANS,
                             fontSize: "0.83rem",
                             lineHeight: 1.65,
-                            color: "rgba(255,255,255,0.58)",
+                            color: "var(--text-body, rgba(255,255,255,0.58))",
                             textAlign: "justify",
                             textJustify: "inter-word",
                             margin: 0,
@@ -305,8 +305,9 @@ export function AboutSection() {
                   transition={{ delay: 0.24, duration: 0.5 }}
                   style={{
                     padding: "1.2rem 1.5rem",
-                    border: "1px solid rgba(255,255,255,0.07)",
+                    border: "1px solid var(--border-subtle, rgba(255,255,255,0.07))",
                     borderRadius: "6px",
+                    background: "var(--bg-card, transparent)",
                   }}
                 >
                   <p
@@ -314,7 +315,7 @@ export function AboutSection() {
                       fontFamily: FONT_MONO,
                       fontSize: "0.55rem",
                       letterSpacing: "0.18em",
-                      color: "rgba(255,255,255,0.3)",
+                      color: "var(--text-muted, rgba(255,255,255,0.3))",
                       textTransform: "uppercase",
                       marginBottom: "0.9rem",
                     }}
@@ -335,7 +336,7 @@ export function AboutSection() {
                           fontFamily: FONT_SANS,
                           fontSize: "0.83rem",
                           lineHeight: 1.5,
-                          color: "rgba(255,255,255,0.45)",
+                          color: "var(--text-body, rgba(255,255,255,0.45))",
                           margin: 0,
                           textAlign: "justify",
                           textJustify: "inter-word",
@@ -364,7 +365,7 @@ export function AboutSection() {
                   <center>• The Gold and the Glory •</center>
                 </span>
               </div>
-              <div style={{ overflow: "hidden" }}>
+              <div style={{ overflow: "hidden", touchAction: "pan-y", pointerEvents: "none" }}>
                 <div
                   style={{
                     display: "flex",
@@ -400,7 +401,7 @@ export function AboutSection() {
                               fontFamily: FONT_SERIF,
                               fontWeight: 800,
                               fontSize: "0.92rem",
-                              color: "#fafaf8",
+                              color: "var(--text-heading, #fafaf8)",
                               whiteSpace: "nowrap",
                             }}
                           >
@@ -412,7 +413,7 @@ export function AboutSection() {
                           style={{
                             fontFamily: FONT_SANS,
                             fontSize: "0.78rem",
-                            color: "rgba(255,255,255,0.42)",
+                            color: "var(--text-muted, rgba(255,255,255,0.42))",
                             margin: 0,
                             whiteSpace: "pre-line",
                           }}
@@ -426,7 +427,7 @@ export function AboutSection() {
                         style={{
                           width: "1px",
                           height: "36px",
-                          background: "rgba(255,255,255,0.08)",
+                          background: "var(--border-subtle, rgba(255,255,255,0.08))",
                           margin: "0 2rem",
                           flexShrink: 0,
                         }}

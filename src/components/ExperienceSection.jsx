@@ -412,33 +412,22 @@ export function ExperienceSection() {
 
   // Connect scroll listener to document.querySelector(".hologram-interface") OR window fallback!
   useEffect(() => {
+    if (isMobile) return;
     const scroller =
       document.querySelector(".hologram-interface") || window;
     const section = sectionRef.current;
     if (!section) return;
 
-    const maxOff = isMobile ? mDims.maxOffset : dims.maxOffset;
-
-    let cachedTop = null;
-    const measureTop = () => {
-      if (scroller !== window) {
-        let acc = 0;
-        let el = section;
-        while (el && el !== scroller) {
-          acc += el.offsetTop;
-          el = el.offsetParent;
-        }
-        cachedTop = acc;
-      }
-    };
+    const maxOff = dims.maxOffset;
 
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
         let raw = 0;
-        if (scroller !== window && scroller.scrollTop !== undefined) {
-          if (cachedTop === null) measureTop();
-          raw = scroller.scrollTop - (cachedTop ?? 0);
+        if (scroller !== window && scroller.getBoundingClientRect) {
+          const sRect = scroller.getBoundingClientRect();
+          const rect = section.getBoundingClientRect();
+          raw = sRect.top - rect.top;
         } else {
           const rect = section.getBoundingClientRect();
           raw = -rect.top;
@@ -447,25 +436,15 @@ export function ExperienceSection() {
       });
     };
 
-    requestAnimationFrame(() => {
-      measureTop();
-      onScroll();
-    });
+    onScroll();
 
     scroller.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener(
-      "resize",
-      () => {
-        cachedTop = null;
-      },
-      { passive: true }
-    );
 
     return () => {
       scroller.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [isMobile, dims.maxOffset, mDims.maxOffset]);
+  }, [isMobile, dims.maxOffset]);
 
   // Auto-close expanded card on scroll
   useEffect(() => {
@@ -526,6 +505,7 @@ export function ExperienceSection() {
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
       particlesRef.current = particlesRef.current.filter((p) => p.life > 0);
       for (const p of particlesRef.current) {
         p.life -= dt / 0.5;
@@ -533,7 +513,7 @@ export function ExperienceSection() {
         p.x += p.vx * dt;
         p.y += p.vy * dt;
         ctx.globalAlpha = p.life * 0.9;
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = isLight ? "#0f172a" : "#ffffff";
         ctx.beginPath();
         ctx.arc(p.x, p.y, Math.max(0.3, p.size * p.life), 0, Math.PI * 2);
         ctx.fill();
@@ -596,7 +576,7 @@ export function ExperienceSection() {
             fontFamily: FONT_SANS,
             fontWeight: 600,
             fontSize: roleFontSize,
-            color: "#fafaf8",
+            color: "var(--text-heading, #fafaf8)",
             lineHeight: 1.25,
             display: "block",
             overflow: "hidden",
@@ -611,7 +591,7 @@ export function ExperienceSection() {
           style={{
             fontFamily: FONT_MONO,
             fontSize: "0.50rem",
-            color: `${clr}bb`,
+            color: `${clr}dd`,
             letterSpacing: "0.04em",
             display: "block",
             lineHeight: 1.4,
@@ -623,7 +603,7 @@ export function ExperienceSection() {
           style={{
             fontFamily: FONT_MONO,
             fontSize: "0.44rem",
-            color: "rgba(255,255,255,0.26)",
+            color: "var(--text-muted, rgba(255,255,255,0.45))",
             letterSpacing: "0.06em",
             display: "block",
             lineHeight: 1.6,
@@ -649,7 +629,7 @@ export function ExperienceSection() {
               fontFamily: FONT_SANS,
               fontWeight: 600,
               fontSize: roleFontSize,
-              color: "#fafaf8",
+              color: "var(--text-heading, #fafaf8)",
               lineHeight: 1.25,
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -663,7 +643,7 @@ export function ExperienceSection() {
             style={{
               fontFamily: FONT_MONO,
               fontSize: "0.44rem",
-              color: "rgba(255,255,255,0.26)",
+              color: "var(--text-muted, rgba(255,255,255,0.45))",
               letterSpacing: "0.06em",
               flexShrink: 0,
               whiteSpace: "nowrap",
@@ -676,7 +656,7 @@ export function ExperienceSection() {
           style={{
             fontFamily: FONT_MONO,
             fontSize: "0.50rem",
-            color: `${clr}bb`,
+            color: `${clr}dd`,
             letterSpacing: "0.04em",
             display: "block",
             lineHeight: 1.4,
@@ -717,7 +697,7 @@ export function ExperienceSection() {
                 fontFamily: FONT_SANS,
                 fontSize: `${fontPx}px`,
                 lineHeight: FONT_LH,
-                color: "rgba(255,255,255,0.62)",
+                color: "var(--text-body, rgba(255,255,255,0.62))",
                 textAlign: "justify",
                 textJustify: "inter-word",
               }}
@@ -757,11 +737,13 @@ export function ExperienceSection() {
           top,
           width,
           ...(interactive ? {} : { height }),
-          background: `linear-gradient(180deg, ${clr}0e 0%, ${clr}05 100%)`,
-          borderLeft: `2px solid ${clr}`,
-          borderTop: `1px solid ${clr}28`,
-          borderBottom: `1px solid ${clr}28`,
-          borderRight: `1px solid ${clr}28`,
+          background: "var(--bg-card, rgba(255,255,255,0.01))",
+          backgroundImage: `linear-gradient(180deg, ${clr}14 0%, ${clr}05 100%)`,
+          boxShadow: "var(--shadow-card, none)",
+          borderLeft: `2.5px solid ${clr}`,
+          borderTop: `1px solid var(--border-subtle, ${clr}28)`,
+          borderBottom: `1px solid var(--border-subtle, ${clr}28)`,
+          borderRight: `1px solid var(--border-subtle, ${clr}28)`,
           borderRadius: "3px",
           boxSizing: "border-box",
           overflow: "hidden",
@@ -802,309 +784,188 @@ export function ExperienceSection() {
     );
   };
 
-  // Mobile Gantt render
+  // Mobile Timeline render - 100% natural touch scrolling with zero sticky freeze
   if (isMobile) {
-    const {
-      chartH: mChartH,
-      STRIP_H: mStripH,
-      SPINE_X: mSpineX,
-      toPy: mToPy,
-      bH: mBH,
-      barLeft: mBarLeft,
-      laneW: mLaneW,
-      entryH: mEntryH,
-      collapsedEntryH: mCollapsedEntryH,
-      projLeft: mProjLeft,
-      monthPx: mMonthPx,
-      maxOffset: mMaxOffset,
-    } = mDims;
-
-    const mSectionH = vpH + mMaxOffset;
-    const mScanY = mMaxOffset > 0 ? (chartOffset / mMaxOffset) * mStripH : 0;
-
     return (
-      <div
+      <section
         ref={sectionRef}
         id="experience"
-        style={{ position: "relative", height: mSectionH }}
+        style={{
+          position: "relative",
+          padding: "4rem 5.5vw 3rem",
+          textAlign: "left",
+          background: "transparent",
+        }}
       >
-        <div
-          style={{
-            position: "sticky",
-            top: 0,
-            height: vpH,
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {/* Header */}
+        {/* Header */}
+        <div style={{ marginBottom: "2.5rem" }}>
           <div
             style={{
-              padding: "0.7rem 4vw 0.6rem",
-              opacity: 1,
-              flexShrink: 0,
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1rem",
             }}
           >
+            <span
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: "0.58rem",
+                letterSpacing: "0.18em",
+                color: "var(--text-muted, rgba(255,255,255,0.4))",
+                textTransform: "uppercase",
+              }}
+            >
+              Experience & Education
+            </span>
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.75rem",
-                marginBottom: "1rem",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: FONT_MONO,
-                  fontSize: "0.55rem",
-                  letterSpacing: "0.18em",
-                  color: "rgba(255,255,255,0.4)",
-                  textTransform: "uppercase",
-                }}
-              >
-                Experience & Education
-              </span>
-              <div
-                style={{
-                  flex: 1,
-                  height: 1,
-                  background: "rgba(255,255,255,0.07)",
-                }}
-              />
-            </div>
-            <h2
-              style={{
-                fontFamily: FONT_SERIF,
-                fontWeight: 800,
-                fontSize: "clamp(1.85rem, 7.5vw, 2.4rem)",
-                lineHeight: 1.1,
-                letterSpacing: "0.02em",
-                color: "#fafaf8",
-                margin: 0,
-              }}
-            >
-              The trajectory.
-            </h2>
-          </div>
-
-          {/* Chart strip */}
-          <div
-            style={{
-              position: "relative",
-              width: "100%",
-              flex: 1,
-              overflow: "hidden",
-              opacity: 1,
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: mChartH,
-                transform: `translateY(-${chartOffset}px)`,
-              }}
-            >
-              {/* Faint year grid */}
-              {YEAR_MARKS.map((y) => (
-                <div
-                  key={y}
-                  style={{
-                    position: "absolute",
-                    top: mToPy(new Date(y, 0, 1)),
-                    left: 0,
-                    right: 0,
-                    height: 1,
-                    background: "rgba(255,255,255,0.04)",
-                  }}
-                />
-              ))}
-
-              {/* Spine */}
-              {(() => {
-                const GAP = 11;
-                const markYs = YEAR_MARKS.map((y) =>
-                  mToPy(new Date(y, 0, 1))
-                ).sort((a, b) => a - b);
-                const segs = [];
-                let prev = 0;
-                for (const my of markYs) {
-                  const h = my - GAP - prev;
-                  if (h > 0) segs.push({ top: prev, height: h });
-                  prev = my + GAP;
-                }
-                const tail = mChartH - prev;
-                if (tail > 0) segs.push({ top: prev, height: tail });
-                return segs.map((s, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      position: "absolute",
-                      left: mSpineX,
-                      top: s.top,
-                      height: s.height,
-                      width: 1,
-                      background: "rgba(255,255,255,0.15)",
-                    }}
-                  />
-                ));
-              })()}
-
-              {/* Year ticks + labels */}
-              {YEAR_MARKS.map((y) => {
-                const yPos = mToPy(new Date(y, 0, 1));
-                return (
-                  <div key={y}>
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: yPos,
-                        left: mSpineX - 4,
-                        width: 8,
-                        height: 1,
-                        background: "rgba(255,255,255,0.22)",
-                      }}
-                    />
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: yPos - 7,
-                        left: 0,
-                        width: mSpineX - 3,
-                        textAlign: "right",
-                        fontFamily: FONT_MONO,
-                        fontSize: "0.44rem",
-                        letterSpacing: "0.04em",
-                        color: "rgba(255,255,255,0.45)",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {y}
-                    </span>
-                  </div>
-                );
-              })}
-
-              {/* Projection strips */}
-              {ENTRIES.map((e) => {
-                const endDate = e.end === "present" ? TODAY : e.end;
-                const stripTop = mToPy(endDate);
-                const stripHv = mBH(e.start, e.end);
-                return (
-                  <div
-                    key={`mp-${e.id}`}
-                    style={{
-                      position: "absolute",
-                      top: e.end === "present" ? stripTop - 20 : stripTop,
-                      left: mProjLeft(e),
-                      width: MOBILE_PROJ_W,
-                      height: e.end === "present" ? stripHv + 20 : stripHv,
-                      background: CLR[e.id],
-                      borderRadius: 2,
-                      opacity: 0.82,
-                    }}
-                  />
-                );
-              })}
-
-              {/* Entry cards */}
-              {(() => {
-                const baseTops = new Map();
-                for (const e of ENTRIES) {
-                  let cy;
-                  if (e.track === "professional") {
-                    const lane = PRO_LANE.get(e.id) ?? 0;
-                    cy = cardCenterY(e, lane, PRO, PRO_LANE, mMonthPx);
-                  } else {
-                    const lane = ALL_LANE.get(e.id) ?? 0;
-                    cy = cardCenterY(
-                      e,
-                      lane,
-                      ENTRIES,
-                      ALL_LANE,
-                      mMonthPx,
-                      true
-                    );
-                  }
-                  baseTops.set(e.id, cy - mCollapsedEntryH[e.id] / 2);
-                }
-
-                const expandedTop =
-                  expanded !== null
-                    ? baseTops.get(expanded) ?? -Infinity
-                    : -Infinity;
-                const pushDelta =
-                  expanded !== null
-                    ? mEntryH[expanded] - mCollapsedEntryH[expanded]
-                    : 0;
-
-                return ENTRIES.map((e) => {
-                  const base = baseTops.get(e.id);
-                  const top =
-                    expanded !== null && e.id !== expanded && base > expandedTop
-                      ? base + pushDelta
-                      : base;
-                  return renderBar(
-                    e,
-                    top,
-                    mBarLeft(e.id),
-                    mLaneW,
-                    mEntryH[e.id],
-                    mCollapsedEntryH[e.id],
-                    MOBILE_FONT_PX,
-                    true
-                  );
-                });
-              })()}
-            </div>
-
-            {/* Particle canvas */}
-            <canvas
-              ref={canvasRef}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                pointerEvents: "none",
-                zIndex: 2,
+                flex: 1,
+                height: 1,
+                background: "var(--border-subtle, rgba(255,255,255,0.07))",
               }}
             />
+          </div>
+          <h2
+            style={{
+              fontFamily: FONT_SERIF,
+              fontWeight: 800,
+              fontSize: "clamp(2rem, 8vw, 2.6rem)",
+              lineHeight: 1.1,
+              letterSpacing: "0.02em",
+              color: "var(--text-heading, #fafaf8)",
+              margin: 0,
+            }}
+          >
+            The trajectory.
+          </h2>
+        </div>
 
-            {/* Spine laser line & comet head */}
-            <>
-              <div
-                style={{
-                  position: "absolute",
-                  left: mSpineX,
-                  top: 0,
-                  width: 1,
-                  height: mScanY,
-                  background: "#ffffff",
-                  opacity: 0.9,
-                  pointerEvents: "none",
-                  zIndex: 1,
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  left: mSpineX - 4,
-                  top: mScanY - 4,
-                  width: 9,
-                  height: 9,
-                  borderRadius: "50%",
-                  background: "#ffffff",
-                  pointerEvents: "none",
-                  zIndex: 3,
-                }}
-              />
-            </>
+        {/* Chronological Vertical Mobile Timeline */}
+        <div style={{ position: "relative", paddingLeft: "1.25rem" }}>
+          {/* Continuous Timeline Spine Line */}
+          <div
+            style={{
+              position: "absolute",
+              left: "4px",
+              top: "14px",
+              bottom: "14px",
+              width: "2px",
+              background: "linear-gradient(to bottom, #6fa3ff 0%, #2ed4c8 33%, #ffaa2e 66%, #c87eff 100%)",
+              opacity: 0.75,
+              borderRadius: "1px",
+            }}
+          />
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.4rem" }}>
+            {ENTRIES.map((e) => {
+              const clr = CLR[e.id];
+              return (
+                <div key={e.id} style={{ position: "relative" }}>
+                  {/* Glowing Node Dot on the Spine */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "-1.25rem",
+                      top: "16px",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "50%",
+                      background: clr,
+                      border: "2px solid var(--bg-page, #000000)",
+                      boxShadow: `0 0 8px ${clr}`,
+                      transform: "translateX(0px)",
+                      zIndex: 2,
+                    }}
+                  />
+
+                  {/* Card Container */}
+                  <div
+                    style={{
+                      padding: "1.2rem 1.3rem",
+                      borderRadius: "6px",
+                      border: `1px solid var(--border-card, rgba(255,255,255,0.12))`,
+                      borderLeft: `3px solid ${clr}`,
+                      background: "var(--bg-card, rgba(255,255,255,0.01))",
+                      backgroundImage: `linear-gradient(180deg, ${clr}14 0%, ${clr}05 100%)`,
+                      boxShadow: "var(--shadow-card, none)",
+                    }}
+                  >
+                    <div style={{ marginBottom: "0.6rem" }}>
+                      <h3
+                        style={{
+                          fontFamily: FONT_SANS,
+                          fontWeight: 700,
+                          fontSize: "0.95rem",
+                          color: "var(--text-heading, #fafaf8)",
+                          margin: "0 0 3px",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {e.role}
+                      </h3>
+
+                      <p
+                        style={{
+                          fontFamily: FONT_MONO,
+                          fontSize: "0.65rem",
+                          letterSpacing: "0.04em",
+                          color: clr,
+                          margin: "0 0 4px",
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {e.company}
+                      </p>
+
+                      <p
+                        style={{
+                          fontFamily: FONT_MONO,
+                          fontSize: "0.56rem",
+                          letterSpacing: "0.06em",
+                          color: "var(--text-muted, rgba(255,255,255,0.45))",
+                          margin: 0,
+                        }}
+                      >
+                        {e.period}
+                      </p>
+                    </div>
+
+                    <div
+                      style={{
+                        height: 1,
+                        background: `${clr}22`,
+                        marginBottom: "0.8rem",
+                      }}
+                    />
+
+                    {/* Bullet Points */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      {e.bullets.map((b, bi) => (
+                        <div key={bi} style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
+                          <span style={{ color: clr, fontSize: "0.55rem", marginTop: "2px", opacity: 0.8 }}>▪</span>
+                          <span
+                            style={{
+                              fontFamily: FONT_SANS,
+                              fontSize: "0.82rem",
+                              lineHeight: 1.55,
+                              color: "var(--text-body, rgba(255,255,255,0.65))",
+                              textAlign: "justify",
+                              textJustify: "inter-word",
+                            }}
+                          >
+                            {b}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 
@@ -1148,7 +1009,7 @@ export function ExperienceSection() {
                 fontFamily: FONT_MONO,
                 fontSize: "0.62rem",
                 letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.4)",
+                color: "var(--text-muted, rgba(255,255,255,0.4))",
                 textTransform: "uppercase",
               }}
             >
@@ -1158,7 +1019,7 @@ export function ExperienceSection() {
               style={{
                 flex: 1,
                 height: "1px",
-                background: "rgba(255,255,255,0.07)",
+                background: "var(--border-subtle, rgba(255,255,255,0.07))",
               }}
             />
           </div>
@@ -1169,7 +1030,7 @@ export function ExperienceSection() {
               fontSize: "clamp(2.6rem, 4.5vw, 4rem)",
               lineHeight: 1.1,
               letterSpacing: "0.02em",
-              color: "#fafaf8",
+              color: "var(--text-heading, #fafaf8)",
               margin: 0,
             }}
           >
@@ -1207,7 +1068,7 @@ export function ExperienceSection() {
                   left: 0,
                   right: 0,
                   height: 1,
-                  background: "rgba(255,255,255,0.04)",
+                  background: "var(--border-subtle, rgba(255,255,255,0.04))",
                 }}
               />
             ))}
@@ -1236,7 +1097,7 @@ export function ExperienceSection() {
                     top: s.top,
                     height: s.height,
                     width: 1,
-                    background: "rgba(255,255,255,0.15)",
+                    background: "var(--border-strong, rgba(255,255,255,0.15))",
                   }}
                 />
               ));
@@ -1257,7 +1118,7 @@ export function ExperienceSection() {
                     fontFamily: FONT_MONO,
                     fontSize: "0.52rem",
                     letterSpacing: "0.04em",
-                    color: "rgba(255,255,255,0.45)",
+                    color: "var(--text-muted, rgba(255,255,255,0.45))",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -1359,7 +1220,7 @@ export function ExperienceSection() {
                 top: 0,
                 width: 1,
                 height: scanY,
-                background: "#ffffff",
+                background: "var(--text-heading, #ffffff)",
                 opacity: 0.9,
                 pointerEvents: "none",
                 zIndex: 1,
@@ -1373,7 +1234,7 @@ export function ExperienceSection() {
                 width: 9,
                 height: 9,
                 borderRadius: "50%",
-                background: "#ffffff",
+                background: "var(--text-heading, #ffffff)",
                 pointerEvents: "none",
                 zIndex: 3,
               }}

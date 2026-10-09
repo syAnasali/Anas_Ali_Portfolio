@@ -8,7 +8,7 @@ export const Footer = () => {
       style={{
         position: "relative",
         marginTop: "3rem",
-        borderTop: "1px solid rgba(255,255,255,0.07)",
+        borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.07))",
         background: "transparent",
         padding: "3rem 6vw 4rem",
         textAlign: "center",
@@ -27,7 +27,7 @@ export const Footer = () => {
             fontFamily: FONT_MONO,
             fontSize: "0.6rem",
             letterSpacing: "0.15em",
-            color: "rgba(255,255,255,0.45)",
+            color: "var(--text-muted, rgba(255,255,255,0.45))",
             textTransform: "uppercase",
           }}
         >
@@ -39,7 +39,7 @@ export const Footer = () => {
             fontFamily: FONT_MONO,
             fontSize: "0.55rem",
             letterSpacing: "0.12em",
-            color: "rgba(255,255,255,0.3)",
+            color: "var(--text-faint, rgba(255,255,255,0.3))",
             margin: 0,
             textTransform: "uppercase",
           }}

@@ -40,7 +40,7 @@ const CERTIFICATES = [
   },
   {
     id: "04",
-    title: "Advanced Certification in Robotics and Automation – Grade A",
+    title: "Advanced Certification in Robotics and Automation | Grade A",
     issuer: "Autofina Robotics | RCAT | CADD Centre | CCUBE",
     date: "Issued August 2025",
     category: "robotics",
@@ -232,7 +232,7 @@ export const CertificatesSection = () => {
             fontFamily: FONT_MONO,
             fontSize: "0.62rem",
             letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.4)",
+            color: "var(--text-muted, rgba(255,255,255,0.4))",
             textTransform: "uppercase",
           }}
         >
@@ -242,7 +242,7 @@ export const CertificatesSection = () => {
           style={{
             flex: 1,
             height: "1px",
-            background: "rgba(255,255,255,0.07)",
+            background: "var(--border-subtle, rgba(255,255,255,0.07))",
           }}
         />
       </div>
@@ -272,7 +272,7 @@ export const CertificatesSection = () => {
               fontWeight: 800,
               lineHeight: 1.05,
               letterSpacing: "0.02em",
-              color: "#fafaf8",
+              color: "var(--text-heading, #fafaf8)",
               margin: "0 0 0.8rem",
             }}
           >
@@ -283,7 +283,7 @@ export const CertificatesSection = () => {
               fontFamily: FONT_SANS,
               fontSize: "0.95rem",
               lineHeight: 1.6,
-              color: "rgba(255,255,255,0.55)",
+              color: "var(--text-body, rgba(255,255,255,0.55))",
               maxWidth: "580px",
               margin: 0,
             }}
@@ -300,34 +300,34 @@ export const CertificatesSection = () => {
             gap: "1.5rem",
             padding: "10px 18px",
             borderRadius: "8px",
-            border: "1px solid rgba(255,255,255,0.12)",
-            background: "rgba(255,255,255,0.02)",
+            border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
+            background: "var(--bg-surface, rgba(255,255,255,0.02))",
             flexShrink: 0,
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.3rem", fontWeight: 800, color: "#fafaf8", lineHeight: 1 }}>
+            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.3rem", fontWeight: 800, color: "var(--text-heading, #fafaf8)", lineHeight: 1 }}>
               17
             </span>
-            <span style={{ fontFamily: FONT_MONO, fontSize: "0.55rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", marginTop: "3px" }}>
+            <span style={{ fontFamily: FONT_MONO, fontSize: "0.55rem", letterSpacing: "0.12em", color: "var(--text-muted, rgba(255,255,255,0.4))", textTransform: "uppercase", marginTop: "3px" }}>
               Total Honors
             </span>
           </div>
 
-          <div style={{ width: "1px", height: "26px", background: "rgba(255,255,255,0.1)" }} />
+          <div style={{ width: "1px", height: "26px", background: "var(--border-subtle, rgba(255,255,255,0.1))" }} />
 
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.3rem", fontWeight: 800, color: "#e8e0d0", lineHeight: 1 }}>
+            <span style={{ fontFamily: FONT_SERIF, fontSize: "1.3rem", fontWeight: 800, color: "var(--text-heading, #e8e0d0)", lineHeight: 1 }}>
               5
             </span>
-            <span style={{ fontFamily: FONT_MONO, fontSize: "0.55rem", letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", marginTop: "3px" }}>
+            <span style={{ fontFamily: FONT_MONO, fontSize: "0.55rem", letterSpacing: "0.12em", color: "var(--text-muted, rgba(255,255,255,0.4))", textTransform: "uppercase", marginTop: "3px" }}>
               Oracle Certs
             </span>
           </div>
 
-          <div style={{ width: "1px", height: "26px", background: "rgba(255,255,255,0.1)" }} />
+          <div style={{ width: "1px", height: "26px", background: "var(--border-subtle, rgba(255,255,255,0.1))" }} />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#4ade80" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--cat-backend, #4ade80)" }}>
             <CheckCircle2 size={16} />
             <span style={{ fontFamily: FONT_MONO, fontSize: "0.58rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>
               100% Verified
@@ -359,12 +359,12 @@ export const CertificatesSection = () => {
                 padding: "8px 16px",
                 borderRadius: "999px",
                 border: isActive
-                  ? "1px solid #e8e0d0"
-                  : "1px solid rgba(255,255,255,0.12)",
+                  ? "1px solid var(--border-strong, #e8e0d0)"
+                  : "1px solid var(--border-subtle, rgba(255,255,255,0.12))",
                 background: isActive
-                  ? "rgba(255,255,255,0.08)"
+                  ? "var(--pill-bg-active, rgba(255,255,255,0.08))"
                   : "transparent",
-                color: isActive ? "#e8e0d0" : "rgba(255,255,255,0.45)",
+                color: isActive ? "var(--text-heading, #e8e0d0)" : "var(--text-muted, rgba(255,255,255,0.45))",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -402,15 +402,16 @@ export const CertificatesSection = () => {
                 style={{
                   padding: "1.3rem 1.5rem",
                   borderRadius: "8px",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  background: "rgba(255,255,255,0.01)",
+                  border: "1px solid var(--border-card, rgba(255,255,255,0.15))",
+                  background: "var(--bg-card, rgba(255,255,255,0.01))",
+                  boxShadow: "var(--shadow-card, none)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                   gap: "1.2rem",
                   transition: "all 0.25s ease",
                 }}
-                whileHover={{ y: -3, borderColor: "#e8e0d0" }}
+                whileHover={{ y: -3, borderColor: "var(--border-strong, #e8e0d0)" }}
               >
                 <div>
                   {/* Category & Icon Row */}
@@ -427,7 +428,7 @@ export const CertificatesSection = () => {
                         fontFamily: FONT_MONO,
                         fontSize: "0.6rem",
                         letterSpacing: "0.12em",
-                        color: "rgba(255,255,255,0.4)",
+                        color: "var(--text-muted, rgba(255,255,255,0.4))",
                         textTransform: "uppercase",
                       }}
                     >
@@ -439,11 +440,12 @@ export const CertificatesSection = () => {
                         width: "34px",
                         height: "34px",
                         borderRadius: "50%",
-                        border: "1px solid rgba(255,255,255,0.12)",
+                        border: "1px solid var(--border-subtle, rgba(255,255,255,0.12))",
+                        background: "var(--bg-surface-elevated, transparent)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "#e8e0d0",
+                        color: "var(--text-heading, #e8e0d0)",
                         flexShrink: 0,
                       }}
                     >
@@ -457,7 +459,7 @@ export const CertificatesSection = () => {
                       fontFamily: FONT_SERIF,
                       fontSize: "1.1rem",
                       fontWeight: 800,
-                      color: "#fafaf8",
+                      color: "var(--text-heading, #fafaf8)",
                       margin: "0 0 6px",
                       lineHeight: 1.3,
                     }}
@@ -470,7 +472,7 @@ export const CertificatesSection = () => {
                     style={{
                       fontFamily: FONT_SANS,
                       fontSize: "0.84rem",
-                      color: "rgba(255,255,255,0.58)",
+                      color: "var(--text-body, rgba(255,255,255,0.58))",
                       margin: 0,
                     }}
                   >
@@ -485,7 +487,7 @@ export const CertificatesSection = () => {
                     alignItems: "center",
                     justifyContent: "space-between",
                     paddingTop: "0.8rem",
-                    borderTop: "1px solid rgba(255,255,255,0.06)",
+                    borderTop: "1px solid var(--border-subtle, rgba(255,255,255,0.06))",
                   }}
                 >
                   <span
@@ -493,7 +495,7 @@ export const CertificatesSection = () => {
                       fontFamily: FONT_MONO,
                       fontSize: "0.62rem",
                       letterSpacing: "0.08em",
-                      color: "rgba(255,255,255,0.45)",
+                      color: "var(--text-muted, rgba(255,255,255,0.45))",
                     }}
                   >
                     {cert.date}
@@ -508,7 +510,7 @@ export const CertificatesSection = () => {
                       fontSize: "0.62rem",
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
-                      color: "#e8e0d0",
+                      color: "var(--text-heading, #e8e0d0)",
                       textDecoration: "none",
                       display: "inline-flex",
                       alignItems: "center",
@@ -547,9 +549,9 @@ export const CertificatesSection = () => {
                 textTransform: "uppercase",
                 padding: "10px 24px",
                 borderRadius: "999px",
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "#e8e0d0",
+                background: "var(--bg-surface-elevated, transparent)",
+                border: "1px solid var(--border-card, rgba(255,255,255,0.15))",
+                color: "var(--text-heading, #e8e0d0)",
                 cursor: "pointer",
                 transition: "all 0.2s",
               }}
@@ -569,8 +571,8 @@ export const CertificatesSection = () => {
                 padding: "10px 24px",
                 borderRadius: "999px",
                 background: "transparent",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "rgba(255,255,255,0.6)",
+                border: "1px solid var(--border-subtle, rgba(255,255,255,0.12))",
+                color: "var(--text-body, rgba(255,255,255,0.6))",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -593,15 +595,15 @@ export const CertificatesSection = () => {
             fontSize: "0.68rem",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            color: "#e8e0d0",
+            color: "var(--text-heading, #e8e0d0)",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
             padding: "8px 16px",
             borderRadius: "6px",
-            background: "transparent",
-            border: "1px solid rgba(255,255,255,0.12)",
+            background: "var(--bg-surface-elevated, transparent)",
+            border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
             transition: "all 0.2s",
           }}
         >

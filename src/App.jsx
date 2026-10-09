@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
@@ -12,15 +12,29 @@ import { Preloader } from "./components/Preloader";
 import { CommandPalette } from "./components/CommandPalette";
 import { TerminalModal } from "./components/TerminalModal";
 import { useHashScroll } from "./hooks/useHashScroll";
+import { useIsMobile, useIsTouchDevice } from "./hooks/useMediaQuery";
 
 function AppContent() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [thumbRatio, setThumbRatio] = useState(0.2);
   const [isLoading, setIsLoading] = useState(true);
   const [isCmdOpen, setIsCmdOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
+  const isMobile = useIsMobile();
+  const isTouchDevice = useIsTouchDevice();
+
   useHashScroll();
+
+  const handlePreloaderComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
+  // Fail-safe timer to guarantee preloader unmounts even if performance timing drops
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleOpenCmd = () => setIsCmdOpen(true);
@@ -39,16 +53,6 @@ function AppContent() {
     const el = document.querySelector(".hologram-interface");
     if (!el) return;
 
-    const onScroll = () => {
-      const max = el.scrollHeight - el.clientHeight;
-      const progress = max > 0 ? el.scrollTop / max : 0;
-      setScrollProgress(progress);
-      setThumbRatio(
-        el.scrollHeight > 0 ? el.clientHeight / el.scrollHeight : 1
-      );
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-
     let target = el.scrollTop;
     let rafId = null;
 
@@ -63,7 +67,16 @@ function AppContent() {
       rafId = requestAnimationFrame(animate);
     };
 
+    const onTouchStart = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      target = el.scrollTop;
+    };
+
     const onWheel = (e) => {
+      if (isMobile || isTouchDevice) return;
       e.preventDefault();
       const max = el.scrollHeight - el.clientHeight;
       if (!rafId) target = el.scrollTop;
@@ -72,24 +85,33 @@ function AppContent() {
     };
 
     window.__portfolioScrollTop = (top) => {
+      if (isMobile || isTouchDevice) {
+        el.scrollTo({ top, behavior: "smooth" });
+        return;
+      }
       target = Math.max(0, Math.min(top, el.scrollHeight - el.clientHeight));
       if (!rafId) rafId = requestAnimationFrame(animate);
     };
 
-    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+
+    if (!isMobile && !isTouchDevice) {
+      el.addEventListener("wheel", onWheel, { passive: false });
+    }
+
     return () => {
-      el.removeEventListener("scroll", onScroll);
       el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("touchstart", onTouchStart);
       if (rafId) cancelAnimationFrame(rafId);
       delete window.__portfolioScrollTop;
     };
-  }, []);
+  }, [isMobile, isTouchDevice]);
 
   return (
     <div className="spatial-scene">
       {/* Premium Opening Holographic System Preloader Animation */}
       <AnimatePresence mode="wait">
-        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+        {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       </AnimatePresence>
 
       {/* Global Interactive Command Palette (Cmd+K) */}
@@ -120,37 +142,15 @@ function AppContent() {
       {/* Bottom Right Session Timer & Compass Exploration HUD */}
       <BottomRightHUD />
 
-      {/* Right Edge Scroll Progress Pill Indicator */}
-      <div
-        style={{
-          position: "fixed",
-          right: "6px",
-          top: "1rem",
-          bottom: "1rem",
-          width: "3px",
-          zIndex: 998,
-          borderRadius: "3px",
-          background: "rgba(255,255,255,0.05)",
-          pointerEvents: "none",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            width: "100%",
-            height: `${Math.max(thumbRatio * 100, 8)}%`,
-            top: `${scrollProgress * (100 - Math.max(thumbRatio * 100, 8))}%`,
-            borderRadius: "3px",
-            background: "rgba(255,255,255,0.25)",
-            transition: "background 0.3s ease",
-          }}
-        />
-      </div>
-
       {/* Route Views */}
       <Routes>
-        <Route index element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<Home />} />
+        <Route path="/skills" element={<Home />} />
+        <Route path="/projects" element={<Home />} />
+        <Route path="/certificates" element={<Home />} />
+        <Route path="/experience" element={<Home />} />
+        <Route path="/contact" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

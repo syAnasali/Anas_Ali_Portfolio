@@ -88,10 +88,13 @@ Robotics: Arduino IDE, SolidWorks, AutoCAD, Tinkercad, Proteus, ESP32`,
         newLogs.push({
           type: "output",
           text: `FEATURED PROJECTS:
-1. AI Code Reviewer Assistant - Real-time AST code reviewer with LLM feedback
-2. Autonomous Line Follower & Obstacle Robot - Sensor PID feedback robot
-3. Medical Diagnostic ML & Telemetry IoT Node - Proteus circuit telemetry
-4. Full-Stack E-Commerce Platform - Next.js & Supabase integration`,
+1. AI Finance Manager - Next.js 15, Inngest & Gemini OCR finance engine
+2. Jarvis AI Assistant - Local LLMs, Ollama, 23 system tools & PySide6 GUI
+3. Model Wall-E Perception Car - ESP32 microcontroller & Blynk IoT robotics
+4. Pixel_Info AI Captioner - PyTorch ResNet50 + LSTM Beam Search deep learning
+5. BillFlow SaaS Billing - Next.js 15, Supabase, React-PDF invoicing engine
+6. News Aggregator App - Android Material Design RSS app with Glide caching
+7. Portfolio Web Engine - Vite React 18 spatial 2D canvas physics engine`,
         });
         break;
 

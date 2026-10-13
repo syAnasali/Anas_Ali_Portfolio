@@ -40,8 +40,8 @@ His engineering expertise spans high-performance modern web architectures (React
    - Implemented real-time sensor data acquisition pipelines using Arduino and ESP32.
 
 ## Technical Skills & Proficiencies
-- Programming Languages: Python, JavaScript (ES6+), TypeScript, C++, C, SQL, PHP, HTML5, CSS3.
-- Full-Stack Frameworks & Libraries: React 18, Next.js 15, Node.js, Express.js, Tailwind CSS, Shadcn UI, Framer Motion, HTML5 Canvas 2D, REST APIs, WebSockets (Socket.IO).
+- Programming Languages: Python, Java, JavaScript (ES6+), TypeScript, C++, C, SQL, PHP, HTML5, CSS3.
+- Full-Stack & Mobile Frameworks: React 18, Next.js 15, Android SDK, Material Design Components, Node.js, Express.js, Tailwind CSS, Shadcn UI, Framer Motion, HTML5 Canvas 2D, REST APIs, WebSockets (Socket.IO).
 - AI, Machine Learning & Data Science: PyTorch, TensorFlow, Scikit-Learn, Pandas, NumPy, OpenCV, Large Language Models (LLMs), Gemini API, LangChain, RAG architectures, OCR data extraction.
 - Robotics, Hardware & IoT: ESP32, Arduino Uno/Nano, Blynk IoT, Ultrasonic Sensors, L298N Motor Drivers, SolidWorks (3D CAD Modeling), Proteus (Circuit Simulation), Embedded C++.
 - Databases, Cloud & DevOps: Supabase, PostgreSQL, MongoDB, Prisma ORM, SQLite, Clerk Auth, Inngest (Background Queues), Git, GitHub, Docker, Netlify, Vercel, Arcjet Security.
@@ -53,41 +53,66 @@ His engineering expertise spans high-performance modern web architectures (React
    - Key Features: Automated OCR receipt scanning, cron-scheduled recurring transactions, automated ledger categorization, and bot attack mitigation.
    - Repository: https://github.com/syAnasali/AI-Finance-Manager
 
-2. Model Wall-E Perception Car
+2. Jarvis AI Assistant (Local LLMs & Autonomous Desktop Control)
+   - Stack: Python 3.13, Ollama (qwen2.5:7b / qwen3:8b), PySide6 (Qt GUI), faster-whisper, pyttsx3, SQLite (WAL Mode), Pydantic, Loguru.
+   - Architecture: User Interface (PySide6 GUI / Push-to-Talk Voice / Terminal CLI) -> AgentController & Heuristic Router -> TaskPlan Sequential Runtime -> Hybrid Memory Retriever -> Local LLM via Ollama -> 23 System Tools with Synchronized Action Approval Runtime.
+   - Key Features: 100% offline-first local LLM inference, real-time word-by-word streaming token accumulator, multi-type persistent memory (fact, preference, project context), 23 built-in filesystem, desktop, and window automation tools, blocking confirmation dialog for risky system actions, offline voice loop, and 78.9% prompt context compression.
+   - Repository: https://github.com/syAnasali/jarvis-ai-assistant
+
+3. Model Wall-E Perception Car
    - Stack: ESP32 Microcontroller, Arduino C++, Blynk IoT, Ultrasonic Sensors, SolidWorks CAD, L298N Driver.
    - Architecture: Ultrasonic & IR Sensors -> ESP32 Microcontroller -> L298N Motor Driver -> Blynk IoT Real-Time Telemetry.
    - Key Features: Low-latency Wi-Fi telemetry (<20ms latency), obstacle perception math, autonomous collision avoidance, and 3D printed chassis.
    - Repository: https://github.com/syAnasali/RCAT-Robotics-and-Automation
 
-3. Crop Prediction System
+4. Pixel_Info: AI Image Caption Generator
+   - Stack: PyTorch, TorchVision, ResNet50, LSTM, FastAPI, Next.js 15, TypeScript, Tailwind CSS, CUDA.
+   - Architecture: Image Upload (Next.js 15) -> FastAPI REST (POST /caption) -> ResNet50 Feature Extractor (2048-dim) -> PyTorch LSTM Decoder (Beam Search k=3, α=0.75) -> Natural Language Caption JSON.
+   - Key Features: Transfer learning CNN visual encoder, custom Xavier-initialized LSTM sequence decoder, Beam Search decoding boosting BLEU-4 by +10.99% and vocabulary diversity by +14.63%, single-load cached FastAPI model lifecycle, and GPU CUDA acceleration.
+   - Repository: https://github.com/syAnasali/Pixel_Info
+
+5. BillFlow SaaS Billing Engine
+   - Stack: Next.js 15 App Router (React 19), TypeScript, Supabase (PostgreSQL with RLS), Tailwind CSS, shadcn/ui, @react-pdf/renderer.
+   - Architecture: Client (Next.js 15) -> Cookie SSR Middleware (Supabase Auth) -> Server Actions (Monetary Validation) -> Supabase PostgreSQL (RLS) -> @react-pdf/renderer (Server A4 PDF Stream).
+   - Key Features: Decoupled SaaS billing engine, dynamic spreadsheet with reactive math, tamper-proof server-side recalculation, historical invoice snapshot immutability, server-side PDF generator, financial SaaS dashboard metrics (Paid revenue, outstanding balances, draft tracking).
+   - Live URL: https://bill-flow-neon.vercel.app/
+   - Repository: https://github.com/syAnasali/BillFlow
+
+6. News Aggregator App (Android)
+   - Stack: Java, Android XML, Material Design Components, Glide, XmlPullParser, HttpURLConnection.
+   - Architecture: BBC News RSS Feed -> Background HttpURLConnection Worker -> XmlPullParser -> NewsItem Model -> RecyclerView with Glide Image Cache -> Progress-Aware In-App WebView.
+   - Key Features: Real-time RSS ingestion, non-blocking background threads, Facebook Shimmer skeleton loading screens, swipe-to-refresh feed update, automatic dark mode, and in-app reader.
+   - Repository: https://github.com/syAnasali/NewsAggregatorApp
+
+7. Crop Prediction System
    - Stack: Python, Scikit-Learn, Flask, NumPy, Pandas.
    - Architecture: Agricultural Parameters (NPK, Temperature, Humidity, Rainfall) -> Flask API Server -> Random Forest / XGBoost Classifier -> Crop Recommendation.
    - Key Features: Multi-regional soil dataset feature engineering, >95% prediction accuracy, lightweight REST API inference.
    - Repository: https://github.com/syAnasali/Crop-Prediction-System
 
-4. Developer Portfolio Web Engine
+8. Developer Portfolio Web Engine
    - Stack: React 18, Vite, Tailwind CSS, Lucide Icons, Framer Motion, HTML5 Canvas 2D.
    - Architecture: Vite React 18 Engine -> 2D Canvas Physics Engine -> Dual-Track Gantt Trajectory -> Spotlight Command Palette -> Retro CLI Terminal Mode.
    - Key Features: 60 FPS spatial starfield, dual theme (Dark Space & Light Blueprint), zero layout shift, Schema.org JSON-LD graph.
    - Live URL: https://anas-ali-global.netlify.app/
    - Repository: https://github.com/syAnasali/Anas_Ali_Portfolio
 
-5. Drive Clone Cloud Storage Platform
+9. Drive Clone Cloud Storage Platform
    - Stack: Node.js, Express, MongoDB, Multer, JWT, REST APIs.
    - Architecture: Client Upload -> Express Middleware (Multer) -> MongoDB GridFS -> JWT Authentication.
    - Repository: https://github.com/syAnasali/Drive_Clone
 
-6. Password Manager
+10. Password Manager
    - Stack: React, Vite, Tailwind CSS, Web Crypto API.
    - Architecture: Client Secret -> Web Crypto API AES/PBKDF2 Encryption -> Local Encrypted Vault.
    - Repository: https://github.com/syAnasali/Password-Manager
 
-7. Automobile Garage Management System
+11. Automobile Garage Management System
    - Stack: PHP, MySQL, Apache, XAMPP, Bootstrap.
    - Architecture: Client Form -> Apache Server -> PHP Controller -> MySQL Relational Database.
    - Repository: https://github.com/syAnasali/Automobile-Garage-Management-System
 
-8. Real-Time Token & Order System
+12. Real-Time Token & Order System
    - Stack: Node.js, Express, React, SQLite, Socket.IO.
    - Architecture: Order Terminal -> Express Server -> Socket.IO WebSocket Server -> Display Screen.
    - Repository: https://github.com/syAnasali/Token_System

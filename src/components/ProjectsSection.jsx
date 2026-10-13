@@ -31,6 +31,27 @@ const PROJECTS = [
   },
   {
     id: "02",
+    title: "Jarvis | Autonomous Desktop AI Assistant",
+    category: "ai-ml",
+    categoryLabel: "AI & Autonomous Agents",
+    description: "A production-oriented, offline-first local AI assistant running local LLMs via Ollama with real-time streaming, multi-type persistent memory, task planning runtime, 23 system automation tools, and PySide6 desktop GUI.",
+    image: "/projects/Jarvis.png",
+    tags: ["Python 3.13", "Ollama", "Local LLMs", "PySide6", "Whisper", "SQLite WAL", "Task Planning", "Agent Tools"],
+    demoUrl: "https://github.com/syAnasali/jarvis-ai-assistant",
+    githubUrl: "https://github.com/syAnasali/jarvis-ai-assistant",
+    featured: true,
+    architecture: {
+      flow: "User (PySide6 GUI / Voice / CLI) → AgentController & Heuristic Router → TaskPlan Executor → Hybrid Memory Retriever (SQLite WAL) → Local LLM (Ollama qwen2.5:7b) → 23 System Tools with Action Approval",
+      challenges: [
+        "Zero-cloud offline LLM inference via Ollama with word-by-word streaming token accumulator parsing.",
+        "Synchronized modal action approval runtime with indefinite OS console thread wait and safety suspension for dangerous OS commands.",
+        "Air-gapped push-to-talk voice loop combining faster-whisper STT and pyttsx3 TTS with dynamic prompt context trimming (78.9% prompt compression).",
+      ],
+      metrics: "405 Tests Passed • 78.9% Prompt Compression • 100% Offline Privacy",
+    },
+  },
+  {
+    id: "03",
     title: "Model Wall-E Perception Car",
     category: "robotics",
     categoryLabel: "Robotics & Hardware",
@@ -51,7 +72,70 @@ const PROJECTS = [
     },
   },
   {
-    id: "03",
+    id: "04",
+    title: "Pixel_Info | AI Image Caption Generator",
+    category: "ai-ml",
+    categoryLabel: "AI & Deep Learning",
+    description: "An end-to-end deep learning system generating natural language captions for images using a pre-trained ResNet50 CNN encoder and custom PyTorch LSTM with Beam Search decoding, served via FastAPI and Next.js 15.",
+    image: "/projects/PixelInfo.png",
+    tags: ["PyTorch", "ResNet50", "LSTM", "FastAPI", "Next.js 15", "Python", "CUDA", "Beam Search"],
+    demoUrl: "https://github.com/syAnasali/Pixel_Info",
+    githubUrl: "https://github.com/syAnasali/Pixel_Info",
+    featured: true,
+    architecture: {
+      flow: "Next.js 15 Client → FastAPI REST (POST /caption) → ResNet50 Feature Extractor (2048-dim) → PyTorch LSTM Decoder (Beam Search k=3) → Generated Natural Language Caption",
+      challenges: [
+        "Visual feature projection mapping 2048-dim ResNet50 vectors into 512-dim multimodal embedding spaces.",
+        "Beam Search decoding (k=3, α=0.75) boosting BLEU-4 by +10.99% and vocabulary diversity by +14.63% over greedy decoding.",
+        "FastAPI model lifecycle caching with GPU CUDA acceleration for single-load inference memory optimization.",
+      ],
+      metrics: "+10.99% BLEU-4 Boost • 6.45M Parameters • Sub-second GPU Inference",
+    },
+  },
+  {
+    id: "05",
+    title: "BillFlow SaaS Billing Engine",
+    category: "web-ui",
+    categoryLabel: "Full-Stack SaaS",
+    description: "A standalone, type-safe SaaS invoice and billing management platform with cookie-based SSR Supabase auth, dynamic spreadsheet math, server-side PDF generation, and financial dashboard analytics.",
+    image: "/projects/BillFlow.png",
+    tags: ["Next.js 15", "TypeScript", "Supabase", "React 19", "TailwindCSS", "shadcn/ui", "PostgreSQL RLS", "React-PDF"],
+    demoUrl: "https://bill-flow-neon.vercel.app/",
+    githubUrl: "https://github.com/syAnasali/BillFlow",
+    featured: true,
+    architecture: {
+      flow: "Client (Next.js 15 / React 19) → SSR Middleware Auth (Supabase) → Server Actions (Monetary Validation) → PostgreSQL (RLS) → @react-pdf/renderer (A4 Stream)",
+      challenges: [
+        "Tamper-proof monetary recalculation validating taxes, discounts, and line-item totals server-side prior to DB commit.",
+        "Historical snapshot integrity preserving business and customer headers at creation time against future profile mutations.",
+        "Server-side A4 invoice compilation and streaming via @react-pdf/renderer in Node.js without client-side overhead.",
+      ],
+      metrics: "100% Type-Safe • Server-Side PDF Stream • Zero Math Drift",
+    },
+  },
+  {
+    id: "06",
+    title: "News Aggregator App",
+    category: "mobile",
+    categoryLabel: "Android & Mobile",
+    description: "A professional, minimal Android news app fetching live BBC News RSS feeds with Material Design cards, shimmer loading, and progress-aware WebView reader.",
+    image: "/projects/NewsApp.png",
+    tags: ["Java", "Android XML", "Material Design", "Glide", "RSS Parsing", "Shimmer UI", "WebView"],
+    demoUrl: "https://github.com/syAnasali/NewsAggregatorApp",
+    githubUrl: "https://github.com/syAnasali/NewsAggregatorApp",
+    featured: false,
+    architecture: {
+      flow: "BBC RSS Feed → HttpURLConnection (Worker Thread) → XmlPullParser → NewsItem Model → RecyclerView / Glide Cache → In-App WebView",
+      challenges: [
+        "Non-blocking background thread networking with HttpURLConnection preventing main-thread UI stutter.",
+        "Optimized image caching and memory footprint management using Glide.",
+        "Smooth pull-to-refresh feed synchronization with animated Facebook Shimmer skeleton placeholders.",
+      ],
+      metrics: "60 FPS Fluid Scroll • Zero Main Thread Blocking",
+    },
+  },
+  {
+    id: "07",
     title: "Crop Prediction System",
     category: "ai-ml",
     categoryLabel: "AI & Machine Learning",
@@ -60,7 +144,7 @@ const PROJECTS = [
     tags: ["Python", "Machine Learning", "Scikit-Learn", "NumPy", "Pandas", "Flask"],
     demoUrl: "https://github.com/syAnasali/Crop-Prediction-System",
     githubUrl: "https://github.com/syAnasali/Crop-Prediction-System",
-    featured: true,
+    featured: false,
     architecture: {
       flow: "Soil Parameters (NPK, Temp, Rain) → Flask API Server → Scikit-Learn Classifier → Recommended Crop Output",
       challenges: [
@@ -72,7 +156,7 @@ const PROJECTS = [
     },
   },
   {
-    id: "04",
+    id: "08",
     title: "Portfolio Website",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
@@ -93,27 +177,7 @@ const PROJECTS = [
     },
   },
   {
-    id: "05",
-    title: "Automobile Garage Management",
-    category: "web-ui",
-    categoryLabel: "Full-Stack Web",
-    description: "An operational management system for garage service centers organizing customer bookings, vehicle records, billing, and service mechanics.",
-    image: "/projects/garage.png",
-    tags: ["HTML5", "CSS3", "PHP", "MySQL", "Apache", "XAMPP"],
-    demoUrl: "https://github.com/syAnasali/Automobile-Garage-Management-System",
-    githubUrl: "https://github.com/syAnasali/Automobile-Garage-Management-System",
-    featured: false,
-    architecture: {
-      flow: "Client Form → Apache Web Server → PHP Controller → MySQL Relational Database",
-      challenges: [
-        "Relational schema design connecting mechanics, customer invoices, and vehicle history.",
-        "Automated billing generator calculating parts cost and labor charges.",
-      ],
-      metrics: "Normalized Relational DB • Sub-second Query Speed",
-    },
-  },
-  {
-    id: "06",
+    id: "09",
     title: "Drive Clone Storage Platform",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
@@ -133,7 +197,7 @@ const PROJECTS = [
     },
   },
   {
-    id: "07",
+    id: "10",
     title: "Password Manager",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
@@ -153,7 +217,27 @@ const PROJECTS = [
     },
   },
   {
-    id: "08",
+    id: "11",
+    title: "Automobile Garage Management",
+    category: "web-ui",
+    categoryLabel: "Full-Stack Web",
+    description: "An operational management system for garage service centers organizing customer bookings, vehicle records, billing, and service mechanics.",
+    image: "/projects/garage.png",
+    tags: ["HTML5", "CSS3", "PHP", "MySQL", "Apache", "XAMPP"],
+    demoUrl: "https://github.com/syAnasali/Automobile-Garage-Management-System",
+    githubUrl: "https://github.com/syAnasali/Automobile-Garage-Management-System",
+    featured: false,
+    architecture: {
+      flow: "Client Form → Apache Web Server → PHP Controller → MySQL Relational Database",
+      challenges: [
+        "Relational schema design connecting mechanics, customer invoices, and vehicle history.",
+        "Automated billing generator calculating parts cost and labor charges.",
+      ],
+      metrics: "Normalized Relational DB • Sub-second Query Speed",
+    },
+  },
+  {
+    id: "12",
     title: "Web Music Player",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
@@ -173,7 +257,7 @@ const PROJECTS = [
     },
   },
   {
-    id: "09",
+    id: "13",
     title: "Task Tracker System",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
@@ -193,12 +277,12 @@ const PROJECTS = [
     },
   },
   {
-    id: "10",
+    id: "14",
     title: "Token & Order Management",
     category: "web-ui",
     categoryLabel: "Full-Stack Web",
     description: "A real-time token and order management system built for high-throughput order queueing in commercial shops and restaurants.",
-    image: "https://placehold.co/600x400/1e293b/ffffff?text=Token+Flow",
+    image: "/projects/Token.png",
     tags: ["Express", "Node.js", "React", "SQLite", "Socket.IO"],
     demoUrl: "https://github.com/syAnasali/Token_System",
     githubUrl: "https://github.com/syAnasali/Token_System",
@@ -216,7 +300,7 @@ const PROJECTS = [
 
 const CATEGORY_TABS = [
   { id: "all", label: "All Systems", icon: <Layers size={14} /> },
-  { id: "web-ai", label: "Web & AI", icon: <Code2 size={14} /> },
+  { id: "web-ai", label: "Web & Apps", icon: <Code2 size={14} /> },
   { id: "robotics", label: "Robotics & Hardware", icon: <Cpu size={14} /> },
   { id: "ai-ml", label: "AI & Data Science", icon: <Brain size={14} /> },
 ];
@@ -231,7 +315,7 @@ export const ProjectsSection = () => {
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (activeCategory === "all") return true;
-    if (activeCategory === "web-ai") return p.category === "web-ai" || p.category === "web-ui";
+    if (activeCategory === "web-ai") return p.category === "web-ai" || p.category === "web-ui" || p.category === "mobile";
     return p.category === activeCategory;
   });
 

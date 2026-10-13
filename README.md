@@ -115,14 +115,19 @@ Anas_Ali_Portfolio_Web/
 ├── public/
 │   ├── projects/                  # Project preview screenshots
 │   │   ├── finance.png            # AI Finance Manager
+│   │   ├── Jarvis.png             # Jarvis Autonomous Desktop AI Assistant
 │   │   ├── robo.jpg               # Model Wall-E Perception Car
+│   │   ├── PixelInfo.png          # Pixel_Info AI Caption Generator
+│   │   ├── BillFlow.png           # BillFlow SaaS Billing Engine
+│   │   ├── NewsApp.png            # News Aggregator App (Android)
 │   │   ├── crop.png               # Crop Prediction System
 │   │   ├── portfolio.png          # Portfolio Web Engine
 │   │   ├── garage.png             # Automobile Garage Management
 │   │   ├── drive.png              # Drive Clone Platform
 │   │   ├── pass.png               # Password Manager
 │   │   ├── music.png              # Web Music Player
-│   │   └── task.png               # Task Tracker System
+│   │   ├── task.png               # Task Tracker System
+│   │   └── Token.png              # Token & Order Management
 │   ├── _redirects                 # Netlify client-side routing redirect rules
 │   ├── favicon.ico                # Website icon (ICO)
 │   ├── favicon.png                # Apple touch and PWA icon (PNG)

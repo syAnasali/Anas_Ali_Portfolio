@@ -9,6 +9,7 @@ His engineering expertise spans high-performance modern web architectures (React
 
 ## Developer Profile & Verification Links
 - Canonical Website: https://anas-ali-global.netlify.app/
+- Official Resume / CV (PDF): https://anas-ali-global.netlify.app/Anas_Ali_Resume.pdf
 - Primary Email: anasali.global@gmail.com
 - Contact Phone: +91 8740926817
 - GitHub: https://github.com/syAnasali

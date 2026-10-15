@@ -105,10 +105,10 @@ export const ContactSection = () => {
     {
       label: "Resume / CV",
       value: "Anas Ali Resume (PDF)",
-      href: "#",
-      download: undefined,
+      href: "/Anas_Ali_Resume.pdf",
+      download: "Anas_Ali_Resume.pdf",
       icon: <FileDown size={16} className="text-emerald-400" />,
-      onClick: () => showToast("Opening Resume / CV..."),
+      onClick: () => showToast("Downloading Anas Ali's Resume (PDF)..."),
       badge: "PDF",
     },
     {
@@ -930,8 +930,8 @@ export const ContactSection = () => {
                 key={i}
                 href={item.href}
                 download={item.download ?? undefined}
-                target={!item.download && item.href.startsWith("http") ? "_blank" : undefined}
-                rel={!item.download && item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                target={item.download || item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.download || item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 whileHover={{ x: 6 }}
                 onClick={(e) => {
                   if (item.copyable) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, ArrowUp, Code2, Cpu, Brain, Layers, X, CpuIcon, Network, ShieldCheck, Terminal } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, ArrowUp, ArrowDown, Code2, Cpu, Brain, Layers, X, CpuIcon, Network, ShieldCheck, Terminal } from "lucide-react";
 import { useIsMobile } from "../hooks/useMediaQuery";
 
 const FONT_SERIF = '"Editorial New", "Playfair Display", Georgia, serif';
@@ -306,6 +306,7 @@ const CATEGORY_TABS = [
 ];
 
 const INITIAL_SHOW_COUNT = 6;
+const SHOW_MORE_INCREMENT = 4;
 
 export const ProjectsSection = () => {
   const isMobile = useIsMobile();
@@ -320,7 +321,9 @@ export const ProjectsSection = () => {
   });
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredProjects.length;
+  const showViewMore = visibleCount < filteredProjects.length;
+  const showShowLess = visibleCount > INITIAL_SHOW_COUNT;
+  const remainingCount = filteredProjects.length - visibleCount;
 
   return (
     <section
@@ -642,29 +645,104 @@ export const ProjectsSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Show More Button */}
-      {hasMore && (
-        <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
-          <button
-            onClick={() => setVisibleCount((prev) => prev + 4)}
-            style={{
-              padding: "12px 28px",
-              borderRadius: "6px",
-              border: "1px solid var(--border-strong, rgba(255,255,255,0.18))",
-              background: "var(--bg-surface-elevated, rgba(255,255,255,0.03))",
-              color: "var(--text-heading, #fafaf8)",
-              fontFamily: FONT_MONO,
-              fontSize: "0.7rem",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              cursor: "pointer",
-              transition: "all 0.25s ease",
-            }}
-          >
-            Load More Projects ({filteredProjects.length - visibleCount} Remaining)
-          </button>
+      {/* Footer Controls & GitHub Trigger */}
+      <div
+        style={{
+          marginTop: "3rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1.2rem",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
+          {showViewMore && (
+            <button
+              onClick={() => setVisibleCount((prev) => prev + SHOW_MORE_INCREMENT)}
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: "0.65rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                padding: "10px 24px",
+                borderRadius: "999px",
+                background: "transparent",
+                border: "1px solid var(--border-subtle, rgba(255,255,255,0.15))",
+                color: "var(--text-heading, #fafaf8)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <ArrowDown size={14} />
+              <span>
+                View More Projects ({remainingCount} Remaining)
+              </span>
+            </button>
+          )}
+
+          {showShowLess && (
+            <button
+              onClick={() => setVisibleCount(INITIAL_SHOW_COUNT)}
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: "0.65rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                padding: "10px 24px",
+                borderRadius: "999px",
+                background: "transparent",
+                border: "1px solid var(--border-subtle, rgba(255,255,255,0.12))",
+                color: "var(--text-body, rgba(255,255,255,0.6))",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <ArrowUp size={14} />
+              <span>Show Less</span>
+            </button>
+          )}
         </div>
-      )}
+
+        {/* GitHub Profile Direct Trigger */}
+        <a
+          href="https://github.com/syAnasali"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: "0.68rem",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--text-heading, #e8e0d0)",
+            textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            padding: "8px 16px",
+            borderRadius: "6px",
+            background: "var(--bg-surface-elevated, transparent)",
+            border: "1px solid var(--border-card, rgba(255,255,255,0.12))",
+            transition: "all 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "var(--border-strong, #fafaf8)";
+            e.currentTarget.style.color = "var(--text-heading, #ffffff)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "var(--border-card, rgba(255,255,255,0.12))";
+            e.currentTarget.style.color = "var(--text-heading, #e8e0d0)";
+          }}
+        >
+          <span>Explore All Projects on GitHub</span>
+          <ArrowRight size={14} />
+        </a>
+      </div>
 
       {/* System Architecture Deep-Dive Modal Drawer */}
       <AnimatePresence>

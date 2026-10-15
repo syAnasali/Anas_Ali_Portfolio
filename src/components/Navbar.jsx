@@ -376,6 +376,48 @@ export const Navbar = () => {
                   >
                     Contact
                   </motion.a>
+
+                  {/* Item 06: Resume / CV */}
+                  <motion.a
+                    href="/Anas_Ali_Resume.pdf"
+                    download="Anas_Ali_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: -45 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.36, duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                    onClick={() => {
+                      setMenuOpen(false);
+                    }}
+                    style={{
+                      fontFamily: '"DM Mono", monospace',
+                      fontSize: "0.82rem",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      color: "var(--electric-cyan, #00f0ff)",
+                      textDecoration: "none",
+                      padding: "1.2rem 0",
+                      borderBottom: "1px solid var(--border-subtle, rgba(255,255,255,0.08))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      textAlign: "left",
+                    }}
+                  >
+                    <span>Resume / CV</span>
+                    <span
+                      style={{
+                        fontSize: "0.62rem",
+                        padding: "2px 8px",
+                        borderRadius: "999px",
+                        border: "1px solid rgba(0, 240, 255, 0.3)",
+                        background: "rgba(0, 240, 255, 0.08)",
+                        color: "var(--electric-cyan, #00f0ff)",
+                      }}
+                    >
+                      PDF
+                    </span>
+                  </motion.a>
                 </nav>
               </motion.div>
             )}

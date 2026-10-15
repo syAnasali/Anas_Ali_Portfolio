@@ -49,14 +49,15 @@ export const TerminalModal = ({ isOpen, onClose }) => {
         newLogs.push({
           type: "output",
           text: `AVAILABLE COMMANDS:
-  help       - Display list of CLI commands
-  whoami     - Anas Ali engineering biography & profile
-  skills     - Technical stack (Full-Stack, AI/ML, Robotics)
-  projects   - Featured software & hardware projects
-  certs      - Verified certifications & honors
-  contact    - Email, Phone, WhatsApp & social links
-  clear      - Clear terminal screen
-  exit       - Close terminal CLI mode`,
+  help        - Display list of CLI commands
+  whoami      - Anas Ali engineering biography & profile
+  skills      - Technical stack (Full-Stack, AI/ML, Robotics)
+  projects    - Featured software & hardware projects
+  certs       - Verified certifications & honors
+  resume / cv - Download Anas Ali official Resume / CV (PDF)
+  contact     - Email, Phone, WhatsApp & social links
+  clear       - Clear terminal screen
+  exit        - Close terminal CLI mode`,
         });
         break;
 
@@ -110,6 +111,30 @@ Robotics: Arduino IDE, SolidWorks, AutoCAD, Tinkercad, Proteus, ESP32`,
         });
         break;
 
+      case "resume":
+      case "cv": {
+        const link = document.createElement("a");
+        link.href = "/Anas_Ali_Resume.pdf";
+        link.download = "Anas_Ali_Resume.pdf";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        newLogs.push({
+          type: "output",
+          text: `INITIATING RESUME DOWNLOAD:
+File:     Anas_Ali_Resume.pdf
+Size:     ~242 KB
+Format:   Adobe PDF Document
+URL:      https://anas-ali-global.netlify.app/Anas_Ali_Resume.pdf
+
+✓ Download started successfully in your browser.`,
+        });
+        break;
+      }
+
       case "contact":
         newLogs.push({
           type: "output",
@@ -117,6 +142,7 @@ Robotics: Arduino IDE, SolidWorks, AutoCAD, Tinkercad, Proteus, ESP32`,
 Email:    anasali.global@gmail.com
 Phone:    +91 8740926817
 WhatsApp: https://wa.me/918740926817
+Resume:   https://anas-ali-global.netlify.app/Anas_Ali_Resume.pdf
 GitHub:   https://github.com/syAnasali
 LinkedIn: https://www.linkedin.com/in/anas-ali-global`,
         });

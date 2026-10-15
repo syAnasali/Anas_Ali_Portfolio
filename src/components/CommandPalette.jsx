@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Compass, FolderGit2, Award, Briefcase, Mail, Phone, Github, Linkedin, Terminal, Sparkles, MessageCircle, ArrowRight, X } from "lucide-react";
+import { Search, Compass, FolderGit2, Award, Briefcase, Mail, Phone, Github, Linkedin, Terminal, Sparkles, MessageCircle, ArrowRight, X, FileDown } from "lucide-react";
 import { scrollToSection } from "../hooks/useHashScroll";
 
 const FONT_SERIF = '"Playfair Display", Georgia, serif';
@@ -76,6 +76,22 @@ const COMMANDS = [
     action: () => {
       scrollToSection("contact");
       history.replaceState(null, "", "#contact");
+    },
+  },
+  {
+    id: "resume",
+    title: "Download Resume / CV (PDF)",
+    category: "Actions",
+    icon: <FileDown size={16} className="text-emerald-400" />,
+    action: () => {
+      const link = document.createElement("a");
+      link.href = "/Anas_Ali_Resume.pdf";
+      link.download = "Anas_Ali_Resume.pdf";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     },
   },
   {

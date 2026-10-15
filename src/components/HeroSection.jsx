@@ -58,11 +58,8 @@ export const HeroSection = () => {
     }
   }, [showToast]);
 
-  const handleResumeDownload = useCallback((e) => {
-    e?.preventDefault?.();
-    scrollToSection("contact");
-    history.replaceState(null, "", "#contact");
-    showToast("Opening Resume / CV...");
+  const handleResumeDownload = useCallback(() => {
+    showToast("Downloading Anas Ali's Resume (PDF)...");
   }, [showToast]);
 
   const onMouseMove = useCallback((e) => {
@@ -396,7 +393,10 @@ export const HeroSection = () => {
 
               {!isMobile && (
                 <motion.a
-                  href="#contact"
+                  href="/Anas_Ali_Resume.pdf"
+                  download="Anas_Ali_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={handleResumeDownload}
                   whileHover={{ y: -2 }}
                   style={{
@@ -443,7 +443,10 @@ export const HeroSection = () => {
 
             {isMobile && (
               <motion.a
-                href="#contact"
+                href="/Anas_Ali_Resume.pdf"
+                download="Anas_Ali_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={handleResumeDownload}
                 whileHover={{ y: -2 }}
                 style={{

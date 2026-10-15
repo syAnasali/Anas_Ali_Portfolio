@@ -128,6 +128,7 @@ Anas_Ali_Portfolio_Web/
 │   │   ├── music.png              # Web Music Player
 │   │   ├── task.png               # Task Tracker System
 │   │   └── Token.png              # Token & Order Management
+│   ├── Anas_Ali_Resume.pdf        # Official PDF Resume / CV
 │   ├── _redirects                 # Netlify client-side routing redirect rules
 │   ├── favicon.ico                # Website icon (ICO)
 │   ├── favicon.png                # Apple touch and PWA icon (PNG)
@@ -220,6 +221,7 @@ The portfolio is optimized for continuous deployment on **Netlify**:
 ## 📬 Contact & Connect
 
 - **Portfolio**: [anas-ali-global.netlify.app](https://anas-ali-global.netlify.app/)
+- **Resume / CV (PDF)**: [anas-ali-global.netlify.app/Anas_Ali_Resume.pdf](https://anas-ali-global.netlify.app/Anas_Ali_Resume.pdf)
 - **Email**: [anasali.global@gmail.com](mailto:anasali.global@gmail.com)
 - **WhatsApp / Phone**: [+91 8740926817](https://wa.me/918740926817)
 - **LinkedIn**: [linkedin.com/in/anas-ali-global](https://www.linkedin.com/in/anas-ali-global)

@@ -19,9 +19,10 @@ export const Footer = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "0.8rem",
+          gap: "1rem",
         }}
       >
+
         <span
           style={{
             fontFamily: FONT_MONO,
